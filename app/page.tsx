@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <section className="mx-auto grid max-w-5xl items-center gap-12 px-6 pb-16 pt-16 sm:px-8 sm:pb-24 sm:pt-24 md:grid-cols-[1fr_280px] md:gap-16">
         <div>
-          <p className="hero-kicker text-sm text-ink-soft">Lagos, Nigeria</p>
+          <p className="hero-kicker text-sm text-ink-soft">Ibadan, Nigeria</p>
           <h1 className="hero-title mt-4 max-w-3xl font-display text-4xl leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">
             Building products from idea to working software.
           </h1>
