@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f4f2ec;
+  --paper-dim: #ece8dd;
+  --ink: #16161a;
+  --ink-soft: #57565c;
+  --line: #ddd8cb;
+  --accent: #2b3a67;
+  --accent-soft: #dfe3ee;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-dim: var(--paper-dim);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+}
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes portrait-in {
+  from { opacity: 0; transform: translateY(24px) rotate(2deg) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) rotate(0) scale(1); }
+}
+
+@keyframes page-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.page-enter { animation: page-in 420ms ease-out both; }
+.nav-enter { animation: page-in 500ms ease-out both; }
+.hero-kicker, .hero-title, .hero-copy, .hero-portrait-wrap {
+  opacity: 0;
+  animation: fade-up 700ms cubic-bezier(.2,.75,.2,1) forwards;
+}
+.hero-title { animation-delay: 90ms; }
+.hero-copy { animation-delay: 180ms; }
+.hero-portrait-wrap {
+  animation-name: portrait-in;
+  animation-delay: 220ms;
+}
+
+.portrait-frame {
+  box-shadow: 12px 12px 0 var(--accent-soft);
+  transition: transform 450ms cubic-bezier(.2,.75,.2,1), box-shadow 450ms ease;
+}
+.portrait-frame:hover {
+  transform: translate(-4px, -4px) rotate(-1deg);
+  box-shadow: 18px 18px 0 var(--accent-soft);
+}
+.portrait-sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,.28) 48%, transparent 60%);
+  transform: translateX(-130%);
+  transition: transform 900ms ease;
+}
+.portrait-frame:hover .portrait-sheen { transform: translateX(130%); }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 700ms cubic-bezier(.2,.75,.2,1) var(--reveal-delay, 0ms),
+    transform 700ms cubic-bezier(.2,.75,.2,1) var(--reveal-delay, 0ms);
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.case-reveal:first-child > section { padding-top: 0; }
+
+.project-card .shot-frame {
+  transition: transform 500ms cubic-bezier(.2,.75,.2,1), box-shadow 500ms ease;
+}
+.project-card:hover .shot-frame {
+  transform: translateY(-7px) rotate(.35deg);
+  box-shadow: 0 18px 45px rgba(22,22,26,.12);
+}
+.shot-frame { transition: transform 400ms ease, box-shadow 400ms ease; }
+.shot-frame:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(22,22,26,.1); }
+.shot-image { transition: transform 700ms cubic-bezier(.2,.75,.2,1); }
+.shot-frame:hover .shot-image { transform: scale(1.018); }
+.project-link span { transition: transform 250ms ease; }
+.project-card:hover .project-link span { transform: translate(3px, -3px); }
+
+.nav-name, .nav-link, .footer-link { position: relative; }
+.nav-name::after, .nav-link::after, .footer-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 300ms cubic-bezier(.2,.75,.2,1);
+}
+.nav-name:hover::after, .nav-link:hover::after, .footer-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero-kicker, .hero-title, .hero-copy, .hero-portrait-wrap, .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
