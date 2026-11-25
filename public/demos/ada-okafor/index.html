@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ada Okafor Photography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400;1,6..96,500&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: dark gallery wall. Huge italic serif name, hairline rules, brass accent used only for small details, masonry grid, lightbox. */
+:root{
+  --bg:#0C0C0E; --panel:#151518; --line:#2A2A2E; --text:#ECE8E1; --dim:#9A968F; --brass:#C8A56A;
+  --display:"Bodoni Moda", Georgia, serif; --body:"Hanken Grotesk", system-ui, sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-weight:300;font-size:17px;line-height:1.65}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:4px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance}
+
+header{position:fixed;inset:0 0 auto 0;z-index:30;mix-blend-mode:normal;background:linear-gradient(to bottom,rgba(12,12,14,.9),rgba(12,12,14,0))}
+.nav{display:flex;justify-content:space-between;align-items:center;height:80px}
+.mark{font-family:var(--display);font-style:italic;font-size:22px;text-decoration:none}
+.nav ul{display:flex;gap:34px;list-style:none;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+.nav a{text-decoration:none;color:var(--dim);transition:color .2s}
+.nav a:hover{color:var(--text)}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 0 56px;position:relative;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:46% 78%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 2%,rgba(12,12,14,.55) 32%,rgba(12,12,14,.12) 62%,rgba(12,12,14,.4))}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.hero .kicker{color:#EBCB90;text-shadow:0 1px 3px rgba(0,0,0,.85),0 0 22px rgba(0,0,0,.7)}
+.kicker{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass);font-weight:500}
+.hero h1{text-shadow:0 2px 30px rgba(0,0,0,.45);font-size:clamp(64px,13vw,200px);line-height:.88;font-style:italic;letter-spacing:-.025em;margin:18px 0 28px}
+.hero h1 span{display:block;padding-left:.9em}
+.hero .meta{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:end;border-top:1px solid var(--line);padding-top:22px;color:var(--dim)}
+.hero .meta p{max-width:44ch}
+.link{display:inline-flex;gap:10px;align-items:center;text-decoration:none;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;border-bottom:1px solid var(--brass);padding-bottom:6px;color:var(--text);transition:gap .25s}
+.link:hover{gap:18px}
+
+section{padding:112px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+h2{font-size:clamp(40px,6vw,84px);line-height:1;font-style:italic}
+.filters{display:flex;gap:26px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+.f{background:none;border:0;color:var(--dim);font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;padding:6px 0;border-bottom:1px solid transparent}
+.f:hover{color:var(--text)}
+.f[aria-pressed="true"]{color:var(--text);border-color:var(--brass)}
+
+.masonry{columns:3;column-gap:18px}
+.shot{break-inside:avoid;margin-bottom:18px;position:relative;cursor:pointer;overflow:hidden;background:var(--panel);border:0;display:block;width:100%;padding:0;text-align:left;color:inherit;font:inherit}
+.shot img{display:block;width:100%;height:auto;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.shot:hover img{transform:scale(1.045)}
+.shot .cap{position:absolute;inset:auto 0 0 0;padding:34px 18px 16px;background:linear-gradient(to top,rgba(0,0,0,.75),transparent);display:flex;justify-content:space-between;font-size:13px;letter-spacing:.12em;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:.35s}
+.shot:hover .cap,.shot:focus-visible .cap{opacity:1;transform:none}
+
+.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:72px;align-items:center}
+.portrait{aspect-ratio:3/4;border:1px solid var(--line);position:relative;overflow:hidden}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.about p{color:var(--dim);max-width:54ch}
+.about p+p{margin-top:18px}
+.about h2{margin-bottom:26px}
+.stats{display:flex;gap:44px;margin:36px 0;flex-wrap:wrap}
+.stats b{font-family:var(--display);font-style:italic;font-weight:400;font-size:52px;line-height:1;display:block;color:var(--text)}
+.stats span{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+
+.pkgs{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line)}
+.pkg{padding:40px 32px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:14px;background:var(--bg);transition:background .3s}
+.pkg:last-child{border-right:0}
+.pkg:hover{background:var(--panel)}
+.pkg .n{font-size:12px;letter-spacing:.2em;color:var(--brass);font-weight:500}
+.pkg h3{font-size:36px;font-style:italic}
+.pkg .price{font-family:var(--display);font-size:30px}
+.pkg ul{list-style:none;color:var(--dim);font-size:15px;flex:1}
+.pkg li{padding:9px 0;border-top:1px solid var(--line)}
+
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:72px}
+form{display:grid;gap:22px}
+label{display:grid;gap:8px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);font-weight:500}
+input,select,textarea{font:inherit;font-weight:300;font-size:17px;letter-spacing:0;text-transform:none;background:transparent;color:var(--text);border:0;border-bottom:1px solid var(--line);padding:10px 0;border-radius:0;width:100%}
+select option{background:var(--panel)}
+textarea{resize:vertical;min-height:90px}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--brass)}
+.send{justify-self:start;background:var(--text);color:var(--bg);border:0;font:inherit;font-weight:500;letter-spacing:.18em;text-transform:uppercase;font-size:13px;padding:16px 34px;cursor:pointer;transition:background .25s}
+.send:hover{background:var(--brass)}
+.ok{color:var(--brass);min-height:1.6em}
+.big{font-family:var(--display);font-style:italic;font-size:clamp(28px,4vw,48px);line-height:1.15;margin:18px 0 28px}
+
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--dim);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(6,6,8,.96);z-index:60;display:none;align-items:center;justify-content:center;padding:24px}
+.lb.on{display:flex}
+.lb figure{max-width:min(1000px,100%);max-height:100%;display:grid;gap:14px}
+.lb img{max-height:78vh;width:auto;height:auto;max-width:100%;margin:0 auto;display:block}
+.lb figcaption{display:flex;justify-content:space-between;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.lb button{position:absolute;background:none;border:1px solid var(--line);color:var(--text);width:48px;height:48px;border-radius:50%;font-size:20px;cursor:pointer}
+.lb button:hover{border-color:var(--brass);color:var(--brass)}
+.lb .x{top:20px;right:20px}.lb .p{left:20px;top:50%}.lb .nx{right:20px;top:50%}
+
+@media (max-width:900px){
+  .masonry{columns:2}
+  .about,.contact{grid-template-columns:1fr;gap:44px}
+  .pkgs{grid-template-columns:1fr}
+  .pkg{border-right:0;border-bottom:1px solid var(--line)}
+  .pkg:last-child{border-bottom:0}
+  .nav ul{gap:18px}
+  section{padding:72px 0}
+}
+@media (max-width:560px){
+  .masonry{columns:1}
+  .nav ul li:nth-child(n+3){display:none}
+  .hero h1 span{padding-left:.4em}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="mark" href="#top">Ada Okafor</a>
+    <nav aria-label="Main"><ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <img class="hero-img" src="img/banner.jpg" alt="Wide desert landscape with acacia trees, mountains and big clouds" width="2400" height="622" fetchpriority="high">
+  <div class="wrap">
+    <p class="kicker">Photographer · Lagos &amp; worldwide</p>
+    <h1>Light,<span>held still.</span></h1>
+    <div class="meta">
+      <p>Weddings, portraits and travel stories shot the way they felt. Honest, unposed and made to last longer than the day.</p>
+      <a class="link" href="#work">View the work <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Selected work</h2>
+      <div class="filters" id="filters">
+        <button class="f" aria-pressed="true" data-f="all">All</button>
+        <button class="f" aria-pressed="false" data-f="Weddings">Weddings</button>
+        <button class="f" aria-pressed="false" data-f="Portraits">Portraits</button>
+        <button class="f" aria-pressed="false" data-f="Travel">Travel</button>
+      </div>
+    </div>
+    <div class="masonry" id="gallery"></div>
+  </div>
+</section>
+
+<section id="about" style="border-top:1px solid var(--line)">
+  <div class="wrap about">
+    <div class="portrait"><img src="img/about.jpg" alt="Portrait of Ada Okafor in a straw hat against a yellow wall" loading="lazy"></div>
+    <div>
+      <p class="kicker">About</p>
+      <h2>I photograph the in-between moments.</h2>
+      <p>The laugh after the vows. The father fixing his agbada before the walk. The quiet at the end of a long street in Accra. Those are the frames people keep coming back to.</p>
+      <p>I've been shooting for nine years across Nigeria, Ghana and Europe. I work with natural light, a small kit and a lot of patience, so you can forget the camera is there.</p>
+      <div class="stats">
+        <div><b>9</b><span>Years shooting</span></div>
+        <div><b>240+</b><span>Weddings &amp; events</span></div>
+        <div><b>14</b><span>Countries</span></div>
+      </div>
+      <a class="link" href="#contact">Say hello <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head"><h2>Collections</h2><p style="color:var(--dim);max-width:36ch">Every package includes a private online gallery and edited high-resolution images.</p></div>
+    <div class="pkgs">
+      <div class="pkg"><span class="n">01</span><h3>Portrait</h3><div class="price">₦150,000</div><ul><li>1.5 hour session</li><li>One location</li><li>25 edited images</li><li>Delivered in 7 days</li></ul></div>
+      <div class="pkg"><span class="n">02</span><h3>Wedding Day</h3><div class="price">₦850,000</div><ul><li>8 hours of coverage</li><li>Second photographer</li><li>400+ edited images</li><li>Printed 30-page album</li></ul></div>
+      <div class="pkg"><span class="n">03</span><h3>Destination</h3><div class="price">From ₦1,800,000</div><ul><li>Two days of coverage</li><li>Travel included in Nigeria</li><li>600+ edited images</li><li>Album plus framed prints</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-top:1px solid var(--line)">
+  <div class="wrap contact">
+    <div>
+      <p class="kicker">Contact</p>
+      <p class="big">Tell me about your day. I'll tell you if I'm free.</p>
+      <p style="color:var(--dim)">hello@adaokafor.example<br>+234 800 000 0000<br>Booking for 2027 now open.</p>
+    </div>
+    <form id="form">
+      <label for="name">Name<input id="name" required autocomplete="name"></label>
+      <label for="email">Email<input id="email" type="email" required autocomplete="email"></label>
+      <label for="type">I'm looking for
+        <select id="type"><option>Wedding photography</option><option>Portrait session</option><option>Destination shoot</option><option>Something else</option></select>
+      </label>
+      <label for="msg">Tell me more<textarea id="msg"></textarea></label>
+      <button class="send" type="submit">Send enquiry</button>
+      <div class="ok" id="ok" role="status"></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Ada Okafor Photography</span><span>Demo website by Trojan. Sample photos are placeholders.</span></div></footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="x" id="lbx" aria-label="Close">✕</button>
+  <button class="p" id="lbp" aria-label="Previous">←</button>
+  <button class="nx" id="lbn" aria-label="Next">→</button>
+  <figure><div id="lbimg"></div><figcaption><span id="lbt"></span><span id="lbc"></span></figcaption></figure>
+</div>
+
+<script>
+const SC=[
+ {t:"Eyes on each other",c:"Weddings",f:"couple",w:1000,h:1400},
+ {t:"Mirror hour",c:"Travel",f:"lake",w:997,h:664},
+ {t:"Red study",c:"Portraits",f:"studio",w:1120,h:1400},
+ {t:"First dance",c:"Weddings",f:"dance",w:1200,h:480},
+ {t:"Afternoon, leaning in",c:"Portraits",f:"outdoor",w:933,h:1400},
+ {t:"Mong Kok, after dark",c:"Travel",f:"street",w:1400,h:934},
+ {t:"Salt and sun",c:"Portraits",f:"closeup",w:687,h:1031},
+ {t:"Window seat",c:"Travel",f:"skyline",w:930,h:1400}
+];
+const imgTag=(s,lazy)=>`<img src="img/${s.f}.jpg" alt="${s.t}"${lazy?' width="'+s.w+'" height="'+s.h+'" loading="lazy"':''}>`;
+const gal=document.getElementById('gallery');
+let shown=[];
+function render(f){
+  shown=SC.map((s,i)=>({...s,i})).filter(s=>f==='all'||s.c===f);
+  gal.innerHTML=shown.map((s,k)=>`<button class="shot" data-k="${k}" aria-label="Open ${s.t}">${imgTag(s,true)}<span class="cap"><span>${s.t}</span><span>${s.c}</span></span></button>`).join('');
+}
+render('all');
+document.getElementById('filters').addEventListener('click',e=>{
+  const b=e.target.closest('.f');if(!b)return;
+  document.querySelectorAll('.f').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  render(b.dataset.f);
+});
+
+// lightbox
+const lb=document.getElementById('lb');let cur=0,opener=null;
+function showLb(k){
+  cur=(k+shown.length)%shown.length;const s=shown[cur];
+  document.getElementById('lbimg').innerHTML=imgTag(s,false);
+  document.getElementById('lbt').textContent=s.t+" · "+s.c;
+  document.getElementById('lbc').textContent=(cur+1)+" / "+shown.length;
+}
+gal.addEventListener('click',e=>{const b=e.target.closest('.shot');if(!b)return;opener=b;showLb(+b.dataset.k);lb.classList.add('on');document.getElementById('lbx').focus()});
+function close(){lb.classList.remove('on');opener&&opener.focus()}
+document.getElementById('lbx').onclick=close;
+document.getElementById('lbp').onclick=()=>showLb(cur-1);
+document.getElementById('lbn').onclick=()=>showLb(cur+1);
+lb.addEventListener('click',e=>{if(e.target===lb)close()});
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('on'))return;
+  if(e.key==='Escape')close();
+  if(e.key==='ArrowLeft')showLb(cur-1);
+  if(e.key==='ArrowRight')showLb(cur+1);
+});
+
+
+
+document.getElementById('form').addEventListener('submit',e=>{
+  e.preventDefault();
+  document.getElementById('ok').textContent=`Thank you, ${document.getElementById('name').value}. I'll reply within two days.`;
+});
+</script>
+<a href="/#websites" id="back-to-portfolio" style="position:fixed;left:14px;bottom:14px;z-index:50;background:#16161a;color:#f4f2ec;font:600 13px/1 system-ui,sans-serif;padding:11px 16px;border-radius:999px;text-decoration:none;box-shadow:0 4px 18px rgba(0,0,0,.25)">&larr; Back to portfolio</a>
+</body>
+</html>
