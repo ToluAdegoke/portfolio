@@ -96,17 +96,17 @@ export const services = [
 ];
 
 export const included = [
-  "Looks great on phones, where most of your customers are",
-  "Loads fast, even on slow connections",
-  "Set up so Google can find you",
-  "Call, WhatsApp and email buttons that work",
-  "Help connecting your own domain name",
-  "A walkthrough so you can make simple updates",
+  "A design that looks great on phones",
+  "Fast loading, even on slow data",
+  "Set up to show up on Google",
+  "One-tap call, WhatsApp and email buttons",
+  "Your own domain name, set up for you",
+  "Small changes after launch",
 ];
 
 export const steps = [
   { title: "Chat", body: "Tell me about your business, your customers and what you want the site to do." },
   { title: "Design", body: "I put together a first version for you to react to. We adjust until it feels like you." },
   { title: "Build", body: "I build the real site with your words, photos and prices, and test it on phones." },
-  { title: "Launch", body: "We go live on your domain, and I show you how to keep it up to date." },
+  { title: "Launch", body: "We go live on your domain. Need a small change later? Just message me." },
 ];

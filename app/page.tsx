@@ -10,7 +10,7 @@ const projectMail = `mailto:${site.email}?subject=${encodeURIComponent("Website 
 const facts = [
   { label: "I build", value: "Business websites, online stores & portfolios" },
   { label: "Based in", value: "Ibadan, working with clients anywhere" },
-  { label: "Also built", value: "Sabi, an app used by 500+ students" },
+  { label: "Also built", value: "Sabi, an app used by a lot of Nigerian students" },
 ];
 
 function WhatsAppIcon() {
@@ -21,15 +21,29 @@ function WhatsAppIcon() {
   );
 }
 
-function Squiggle({ className = "" }: { className?: string }) {
+// Hand-drawn double-loop arrow that keeps drawing itself in.
+function SwirlArrow({ className = "" }: { className?: string }) {
   return (
-    <svg aria-hidden="true" viewBox="0 0 120 12" preserveAspectRatio="none" className={`h-3 ${className}`} fill="none">
-      <path
-        d="M2 8 C 12 2, 22 2, 32 7 S 52 12, 62 6 S 82 1, 92 6 S 110 11, 118 5"
-        stroke="currentColor"
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
+    <svg aria-hidden="true" viewBox="0 0 100 80" fill="none" className={`swirl ${className}`}>
+      <g>
+        <path
+          className="swirl-line"
+          pathLength={1}
+          d="M4 30 C 40 18, 84 24, 78 38 C 73 48, 34 47, 40 37 C 46 28, 90 34, 82 48 C 76 58, 36 57, 42 47 C 48 38, 74 50, 64 64 C 61 68, 60 72, 59 75"
+          stroke="currentColor"
+          strokeWidth="3"
+          strokeLinecap="round"
+        />
+        <path
+          className="swirl-head"
+          pathLength={1}
+          d="M50 68 L59 78 L68 68"
+          stroke="currentColor"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
     </svg>
   );
 }
@@ -118,17 +132,16 @@ export default function Home() {
           <Reveal>
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
-                <p className="label">Recent websites</p>
                 <h2 id="websites-heading" className="mt-3 text-3xl font-semibold sm:text-4xl">
                   Sites I&rsquo;ve{" "}
                   <span className="relative inline-block">
                     built
-                    <Squiggle className="absolute -bottom-3 left-0 w-full text-pop" />
                   </span>
                 </h2>
               </div>
-              <p aria-hidden="true" className="note rotate-[-3deg] text-2xl">
-                go on, open one on your phone ↓
+              <p aria-hidden="true" className="note relative rotate-[-3deg] pr-20 text-2xl">
+                go on, open one on your phone
+                <SwirlArrow className="absolute -right-4 -top-6 h-[75px] w-24 text-accent" />
               </p>
             </div>
           </Reveal>
@@ -197,8 +210,7 @@ export default function Home() {
         className="mx-auto max-w-6xl scroll-mt-20 px-6 py-20 sm:px-8 sm:py-24"
       >
         <Reveal>
-          <p className="label">Services</p>
-          <h2 id="services-heading" className="mt-3 max-w-2xl text-3xl font-semibold sm:text-4xl">
+          <h2 id="services-heading" className="max-w-2xl text-3xl font-semibold sm:text-4xl">
             What I can build for your business
           </h2>
         </Reveal>
@@ -241,8 +253,7 @@ export default function Home() {
       >
         <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24">
           <Reveal>
-            <p className="label">How it works</p>
-            <h2 id="process-heading" className="mt-3 text-3xl font-semibold sm:text-4xl">
+            <h2 id="process-heading" className="text-3xl font-semibold sm:text-4xl">
               From first chat to live site
             </h2>
           </Reveal>
@@ -283,8 +294,7 @@ export default function Home() {
       <section aria-labelledby="beyond-heading" className="border-t border-line bg-paper-dim/40">
         <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24">
           <Reveal>
-            <p className="label">Beyond websites</p>
-            <h2 id="beyond-heading" className="mt-3 max-w-2xl text-3xl font-semibold sm:text-4xl">
+            <h2 id="beyond-heading" className="max-w-2xl text-3xl font-semibold sm:text-4xl">
               I also build full products
             </h2>
             <p className="mt-4 max-w-xl leading-relaxed text-ink-soft">
@@ -373,8 +383,7 @@ export default function Home() {
       <section aria-labelledby="offclock-heading" className="border-t border-line">
         <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24">
           <Reveal>
-            <p className="label">Off the clock</p>
-            <h2 id="offclock-heading" className="mt-3 text-3xl font-semibold sm:text-4xl">
+            <h2 id="offclock-heading" className="text-3xl font-semibold sm:text-4xl">
               When I&rsquo;m not building
             </h2>
           </Reveal>

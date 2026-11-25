@@ -10,14 +10,9 @@ export default function Footer() {
   return (
     <footer id="contact" className="bg-ink text-paper">
       <div className="mx-auto max-w-6xl px-6 pb-10 pt-20 sm:px-8 sm:pt-24">
-        <p className="label !text-paper/50">Contact</p>
-        <h2 className="mt-4 max-w-3xl text-5xl font-semibold leading-[1.02] sm:text-7xl">
-          Make we build{" "}
-          <span className="text-pop">something.</span>
+        <h2 className="max-w-3xl text-5xl font-semibold leading-[1.02] sm:text-7xl">
+          Let&rsquo;s get your business online.
         </h2>
-        <p className="note mt-3 rotate-[-2deg] text-2xl !text-paper/70">
-          (that&rsquo;s Pidgin for &ldquo;let&rsquo;s build something&rdquo;)
-        </p>
         <p className="mt-8 max-w-lg text-lg text-paper/70">
           Tell me about your business and what you want your website to
           do. We&rsquo;ll take it from there.

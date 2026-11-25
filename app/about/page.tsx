@@ -11,8 +11,7 @@ export default function About() {
     <div className="mx-auto max-w-3xl px-6 py-16 sm:px-8 sm:py-24">
       <div className="grid items-end gap-8 sm:grid-cols-[1fr_180px]">
         <div>
-          <p className="hero-kicker text-sm text-ink-soft">A little context</p>
-          <h1 className="hero-title mt-3 font-display text-4xl leading-tight sm:text-5xl">
+          <h1 className="hero-title font-display text-4xl leading-tight sm:text-5xl">
             About
           </h1>
         </div>
