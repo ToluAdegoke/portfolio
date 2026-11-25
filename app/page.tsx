@@ -2,14 +2,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { DesktopShot, PhoneShot } from "@/components/Shot";
 import Reveal from "@/components/Reveal";
-import { demos, site } from "@/lib/data";
+import { demos, services, site, stack } from "@/lib/data";
 
 export default function Home() {
   return (
     <>
+      <div className="hero-bg">
       <section className="mx-auto grid max-w-5xl items-center gap-12 px-6 pb-16 pt-16 sm:px-8 sm:pb-24 sm:pt-24 md:grid-cols-[1fr_280px] md:gap-16">
         <div>
-          <p className="hero-kicker text-sm text-ink-soft">Ibadan, Nigeria</p>
+          <p className="hero-kicker inline-flex items-center gap-2 rounded-full border border-line bg-paper/80 px-3 py-1.5 text-sm text-ink-soft backdrop-blur">
+            <span aria-hidden="true" className="pulse-dot" />
+            Open to internships &amp; freelance work
+          </p>
           <h1 className="hero-title mt-4 max-w-3xl font-display text-4xl leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">
             Building products from idea to working software.
           </h1>
@@ -18,6 +22,23 @@ export default function Home() {
             currently shipping Sabi and Genpay while figuring out how
             AI-assisted development fits into building real web and mobile
             software.
+          </p>
+          <div className="hero-copy mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href="#work"
+              className="btn-primary focus-ring rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper"
+            >
+              See my work
+            </a>
+            <a
+              href={`mailto:${site.email}`}
+              className="btn-ghost focus-ring rounded-full border border-ink/20 px-6 py-3 text-sm font-medium"
+            >
+              Get in touch
+            </a>
+          </div>
+          <p className="hero-copy mt-5 text-sm text-ink-soft">
+            Ibadan, Nigeria
           </p>
         </div>
 
@@ -35,8 +56,22 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </div>
+
+      <div className="border-y border-line bg-paper-dim/60 py-5" aria-label="Tools I build with">
+        <div className="marquee">
+          <ul className="marquee-track">
+            {[...stack, ...stack].map((t, i) => (
+              <li key={i} aria-hidden={i >= stack.length} className="font-display text-xl text-ink-soft">
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
 
       <section
+        id="work"
         aria-labelledby="work-heading"
         className="mx-auto max-w-5xl border-t border-line px-6 py-16 sm:px-8 sm:py-24"
       >
@@ -103,6 +138,29 @@ export default function Home() {
             />
           </div>
         </Link>
+        </Reveal>
+
+        <Reveal delay={80}>
+          <div className="grid grid-cols-1 gap-4 border-t border-line py-8 md:grid-cols-[0.9fr_1.1fr] md:gap-14">
+            <div>
+              <p className="text-sm text-ink-soft">Co-founder - In progress</p>
+              <h3 className="mt-2 font-display text-3xl leading-tight">Genpay</h3>
+            </div>
+            <div>
+              <p className="max-w-md text-ink-soft">
+                An event ticketing and merchandise platform. I build the
+                Flutter mobile app and the Next.js web dashboard, with
+                Supabase and Paystack behind it.
+              </p>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {["Flutter", "Next.js", "Supabase", "Paystack"].map((t) => (
+                  <li key={t} className="rounded-full border border-line bg-paper-dim px-3 py-1 text-xs text-ink-soft">
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </Reveal>
       </section>
 
@@ -174,6 +232,30 @@ export default function Home() {
             and tell me what you need.
           </p>
         </Reveal>
+      </section>
+
+      <section
+        aria-labelledby="services-heading"
+        className="mx-auto max-w-5xl border-t border-line px-6 py-16 sm:px-8 sm:py-24"
+      >
+        <Reveal>
+          <h2 id="services-heading" className="font-display text-3xl leading-tight sm:text-4xl">
+            What I can build for you
+          </h2>
+        </Reveal>
+        <ul className="mt-10 grid gap-5 md:grid-cols-3">
+          {services.map((x, i) => (
+            <li key={x.title}>
+              <Reveal delay={i * 80}>
+                <div className="service-card h-full rounded-2xl border border-line bg-paper-dim/50 p-6">
+                  <span className="font-display text-sm text-accent">0{i + 1}</span>
+                  <h3 className="mt-3 font-display text-2xl leading-tight">{x.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">{x.body}</p>
+                </div>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="mx-auto max-w-5xl border-t border-line px-6 py-16 sm:px-8 sm:py-24">

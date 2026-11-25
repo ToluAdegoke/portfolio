@@ -9,12 +9,12 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line">
-      <div className="mx-auto max-w-5xl px-6 py-10 sm:px-8">
+    <footer className="bg-ink text-paper">
+      <div className="mx-auto max-w-5xl px-6 py-16 sm:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="font-display text-xl">Let&rsquo;s talk.</p>
-            <p className="mt-1 max-w-sm text-sm text-ink-soft">
+            <p className="font-display text-4xl leading-tight sm:text-5xl">Let&rsquo;s build something.</p>
+            <p className="mt-3 max-w-sm text-sm text-paper/70">
               Open to conversations about products, internships, and
               freelance projects.
             </p>
@@ -24,7 +24,7 @@ export default function Footer() {
               <li key={link.label}>
                 <a
                   href={link.href}
-                  className="footer-link focus-ring rounded-sm underline decoration-line underline-offset-4 transition-colors hover:decoration-ink"
+                  className="footer-link focus-ring rounded-sm underline decoration-paper/30 underline-offset-4 transition-colors hover:decoration-paper"
                   target={link.href.startsWith("http") ? "_blank" : undefined}
                   rel={
                     link.href.startsWith("http")
@@ -38,7 +38,7 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <p className="mt-10 text-xs text-ink-soft">
+        <p className="mt-10 text-xs text-paper/50">
           © {new Date().getFullYear()} Tolulope Adegoke. Built with Next.js.
         </p>
       </div>
