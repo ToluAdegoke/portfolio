@@ -28,6 +28,14 @@ export default function Footer() {
         >
           {site.email} <span aria-hidden="true">→</span>
         </a>
+        <a
+          href={site.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="footer-link focus-ring mt-3 block w-fit rounded-sm text-lg text-paper/90 sm:text-2xl"
+        >
+          WhatsApp: +234 902 703 5268 <span aria-hidden="true">→</span>
+        </a>
 
         <div className="mt-20 flex flex-col gap-6 border-t border-paper/15 pt-6 text-sm text-paper/60 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Tolulope Adegoke · Ibadan, Nigeria</p>

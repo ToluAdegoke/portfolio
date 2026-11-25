@@ -6,6 +6,7 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/tolulope-adegoke-a64b89283",
   twitter: "https://twitter.com/dev_Tolu",
   sabi: "https://sabiexam.com",
+  whatsapp: `https://wa.me/2349027035268?text=${encodeURIComponent("Hi Tolu, I'd like a website for my business.")}`,
 };
 
 export const nav = [
