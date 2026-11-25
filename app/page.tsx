@@ -54,12 +54,8 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-6 pb-14 pt-14 sm:px-8 sm:pt-20">
         <div className="grid items-end gap-10 md:grid-cols-[1fr_260px] md:gap-16">
           <div>
-            <p className="hero-kicker label flex items-center gap-2.5">
-              <span aria-hidden="true" className="status-dot" />
-              Open to internships &amp; freelance work
-            </p>
-            <h1 className="hero-title mt-6 text-5xl font-semibold leading-[0.98] sm:text-6xl md:text-7xl">
-              Hi, I&rsquo;m <span className="highlight">Tolu</span>{" "}
+            <h1 className="hero-title text-5xl font-semibold leading-[0.98] sm:text-6xl md:text-7xl">
+              Hi, I&rsquo;m Tolu{" "}
               <span aria-hidden="true" className="wave">👋</span>
               <span className="sr-only">, short for Tolulope Adegoke.</span>
             </h1>

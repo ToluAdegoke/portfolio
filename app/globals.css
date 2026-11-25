@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f8f7f3;
-  --paper-dim: #efede6;
-  --ink: #121412;
-  --ink-soft: #5d615c;
-  --line: #e1ded5;
-  --accent: #1c5a40;
-  --accent-soft: #dceae2;
-  --pop: #ffd23f;
-  --pop-soft: #fff1bd;
+  --paper: #fbfbfd;
+  --paper-dim: #f0f2f7;
+  --ink: #0b0d12;
+  --ink-soft: #596071;
+  --line: #e1e4eb;
+  --accent: #1f47d6;
+  --accent-soft: #e3e9fd;
+  --pop: #5b85ff;
+  --pop-soft: #e6edff;
 }
 
 @theme inline {
@@ -94,7 +94,7 @@ h1, h2, h3 {
   transition: border-color 300ms ease, box-shadow 300ms ease;
 }
 .project-card:hover {
-  border-color: #cfcbc0;
+  border-color: #c9cedb;
   box-shadow: 0 20px 50px -24px rgba(18,20,18,.22);
 }
 .shot-frame { transition: box-shadow 400ms ease; }
@@ -135,37 +135,10 @@ h1, h2, h3 {
 }
 .btn-primary { background: var(--ink); color: var(--paper); }
 .btn-primary:hover { background: var(--accent); }
-.btn-secondary { border: 1px solid #cfcbc0; }
+.btn-secondary { border: 1px solid #c9cedb; }
 .btn-secondary:hover { border-color: var(--ink); }
 
-.status-dot {
-  width: 7px; height: 7px; border-radius: 999px; background: #2f9e5b;
-  box-shadow: 0 0 0 3px rgba(47,158,91,.18);
-}
-
 /* ---------- Personality layer ---------- */
-
-/* Yellow highlighter swipe behind a word */
-.highlight {
-  position: relative;
-  white-space: nowrap;
-  z-index: 0;
-}
-.highlight::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: -0.12em;
-  right: -0.12em;
-  bottom: 0.08em;
-  height: 0.42em;
-  background: var(--pop);
-  border-radius: 0.15em 0.4em 0.2em 0.35em;
-  transform: rotate(-1.5deg) scaleX(0);
-  transform-origin: left;
-  animation: swipe 700ms 550ms cubic-bezier(.2,.75,.2,1) forwards;
-}
-@keyframes swipe { to { transform: rotate(-1.5deg) scaleX(1); } }
 
 /* Handwritten margin notes */
 .note {
@@ -242,7 +215,6 @@ h1, h2, h3 {
 .sticky-note:hover { rotate: 0deg !important; translate: 0 -4px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .highlight::before { transform: rotate(-1.5deg) scaleX(1); }
   html {
     scroll-behavior: auto;
   }
