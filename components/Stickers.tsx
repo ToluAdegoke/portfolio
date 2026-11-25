@@ -10,7 +10,7 @@ type Sticker = {
 
 const stickers: Sticker[] = [
   { text: "📍 Ibadan, NG", className: "-left-8 top-6 bg-paper", rotate: -8 },
-  { text: "Bowen CS '27", className: "-right-6 top-[38%] bg-accent text-paper", rotate: 6 },
+  { text: "Taking new projects", className: "-right-6 top-[38%] bg-accent text-paper", rotate: 6 },
   { text: "500+ students on Sabi", className: "-left-10 bottom-14 bg-accent-soft", rotate: -4 },
   { text: "🏀 🎧 🚗", className: "-right-3 -bottom-3 bg-paper", rotate: 9 },
 ];

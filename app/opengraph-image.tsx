@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-export const alt = "Tolulope Adegoke: product and software engineer, co-founder of Sabi";
+export const alt = "Tolulope Adegoke: websites for small businesses";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -26,14 +26,14 @@ export default async function Image() {
       >
         <div style={{ display: "flex", flexDirection: "column", maxWidth: 680 }}>
           <div style={{ fontSize: 28, color: "#1f47d6", letterSpacing: 2 }}>
-            PRODUCT &amp; SOFTWARE ENGINEER
+            WEBSITES FOR SMALL BUSINESSES
           </div>
           <div style={{ fontSize: 96, fontWeight: 700, lineHeight: 1, marginTop: 22, letterSpacing: -3 }}>
             Hi, I&rsquo;m Tolu.
           </div>
           <div style={{ fontSize: 36, color: "#596071", lineHeight: 1.3, marginTop: 28 }}>
-            Co-founder of Sabi, AI exam prep used by 500+ students. Computer
-            Science at Bowen University.
+            Fast, mobile-friendly websites for cafes, shops, photographers
+            and brands. Based in Ibadan, Nigeria.
           </div>
           <div style={{ display: "flex", alignItems: "center", marginTop: 44, fontSize: 26 }}>
             <div style={{ width: 14, height: 14, borderRadius: 99, background: "#1f47d6", marginRight: 14 }} />
