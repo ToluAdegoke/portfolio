@@ -49,7 +49,7 @@ export const demos = [
 export const principles = [
   {
     title: "Ship to real people early",
-    body: "Sabi went from a hypothesis to 141 users through word of mouth alone. Real usage tells me what to build next better than any roadmap.",
+    body: "Sabi went from a hypothesis to 500+ students. Real usage tells me what to build next better than any roadmap.",
   },
   {
     title: "Do it properly where it counts",

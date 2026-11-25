@@ -68,7 +68,7 @@ export default function Home() {
               <Link href="/work/sabi" className="focus-ring rounded-sm text-ink underline decoration-line decoration-2 underline-offset-4 hover:decoration-accent">
                 Sabi
               </Link>
-              , an AI exam-prep platform with 141 students, and Genpay, a
+              , an AI exam-prep platform with 500+ students, and Genpay, a
               ticketing platform for events.
             </p>
             <div className="hero-copy mt-9 flex flex-wrap items-center gap-3">
@@ -160,12 +160,12 @@ export default function Home() {
                 </p>
                 <dl className="mt-7 grid grid-cols-2 gap-4 border-t border-line pt-5">
                   <div>
-                    <dt className="text-3xl font-semibold tracking-tight">141</dt>
+                    <dt className="text-3xl font-semibold tracking-tight">500+</dt>
                     <dd className="mt-1 text-sm text-ink-soft">students signed up</dd>
                   </div>
                   <div>
-                    <dt className="text-3xl font-semibold tracking-tight">₦0</dt>
-                    <dd className="mt-1 text-sm text-ink-soft">spent on acquisition</dd>
+                    <dt className="text-3xl font-semibold tracking-tight">JAMB + WAEC</dt>
+                    <dd className="mt-1 text-sm text-ink-soft">exams covered</dd>
                   </div>
                 </dl>
                 <div className="mt-7">
