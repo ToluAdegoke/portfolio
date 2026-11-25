@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kiln &amp; Kettle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: big poster-type hero, ticker, tabbed menu, reservation card. Pale sage paper, forest ink, tomato accent. */
+:root{
+  --paper:#E6ECE2; --ink:#10261B; --leaf:#1F4D36; --tomato:#E8452C; --butter:#F3C85A; --white:#F8FAF5;
+  --display:"Gloock", Georgia, serif; --body:"Figtree", system-ui, sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--tomato);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1;text-wrap:balance}
+
+/* nav */
+header{position:sticky;top:0;z-index:20;background:rgba(230,236,226,.92);backdrop-filter:blur(8px);border-bottom:1.5px solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{font-family:var(--display);font-size:26px;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo i{width:14px;height:14px;border-radius:50%;background:var(--tomato);display:inline-block}
+nav ul{display:flex;gap:28px;list-style:none;font-weight:600;font-size:15px}
+nav a{text-decoration:none}
+nav a:hover{color:var(--tomato)}
+.btn{display:inline-block;background:var(--ink);color:var(--white);padding:13px 24px;border-radius:999px;font-weight:700;text-decoration:none;border:0;font:inherit;font-weight:700;cursor:pointer;transition:transform .2s, background .2s}
+.btn:hover{background:var(--tomato);transform:translateY(-2px)}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn.alt:hover{background:var(--ink);color:var(--white)}
+.burger{display:none;background:none;border:1.5px solid var(--ink);border-radius:10px;padding:8px 12px;font:inherit;font-weight:700;cursor:pointer}
+
+/* hero */
+.hero{padding:56px 0 40px;display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
+.status{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;font-weight:600;font-size:14px;background:var(--white)}
+.dot{width:10px;height:10px;border-radius:50%;background:#999}
+.dot.open{background:#2FA36B;box-shadow:0 0 0 4px rgba(47,163,107,.25);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(47,163,107,0)}}
+.hero h1{font-size:clamp(54px,9.4vw,128px);margin:22px 0 22px;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--tomato)}
+.hero p{max-width:46ch;font-size:19px;margin-bottom:28px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.cup{position:relative;aspect-ratio:4/5;background:var(--leaf);border-radius:46% 46% 24px 24px / 38% 38% 24px 24px;display:grid;place-items:center;overflow:hidden;border:1.5px solid var(--ink)}
+.cup img{width:100%;height:100%;object-fit:cover;display:block}
+.steam path{stroke:var(--butter);stroke-width:5;fill:none;stroke-linecap:round;stroke-dasharray:60;animation:steam 3.2s ease-in-out infinite}
+.steam path:nth-child(2){animation-delay:.6s}.steam path:nth-child(3){animation-delay:1.2s}
+@keyframes steam{0%{stroke-dashoffset:60;opacity:.2}50%{opacity:1}100%{stroke-dashoffset:-60;opacity:.2}}
+.stamp{position:absolute;right:16px;bottom:16px;width:104px;height:104px;border-radius:50%;background:var(--butter);color:var(--ink);display:grid;place-items:center;text-align:center;font-weight:800;font-size:12px;line-height:1.15;transform:rotate(-12deg);border:1.5px solid var(--ink)}
+
+/* ticker */
+.ticker{background:var(--ink);color:var(--butter);overflow:hidden;white-space:nowrap;padding:14px 0;font-family:var(--display);font-size:24px}
+.ticker div{display:inline-block;animation:slide 28s linear infinite}
+.ticker span{margin:0 22px}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:88px 0}
+.eyebrow{font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--tomato);margin-bottom:14px}
+h2{font-size:clamp(38px,5.6vw,72px);margin-bottom:18px}
+
+/* story */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.photos{grid-column:1/-1;display:grid;grid-template-columns:1.5fr 1fr;gap:18px;margin-top:8px}
+.photos img{width:100%;height:100%;min-height:260px;max-height:460px;object-fit:cover;border:1.5px solid var(--ink);border-radius:22px;display:block}
+.story p+p{margin-top:16px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fact{background:var(--white);border:1.5px solid var(--ink);border-radius:20px;padding:22px}
+.fact b{font-family:var(--display);font-weight:400;font-size:44px;display:block;line-height:1;color:var(--leaf)}
+.fact:nth-child(2){background:var(--butter)}
+.fact:nth-child(3){background:var(--tomato);color:var(--white)}
+.fact:nth-child(3) b{color:var(--white)}
+
+/* menu */
+.menu{background:var(--leaf);color:var(--white)}
+.menu .eyebrow{color:var(--butter)}
+.tabs{display:flex;gap:10px;margin:26px 0 30px;flex-wrap:wrap}
+.tab{background:transparent;color:var(--white);border:1.5px solid var(--white);border-radius:999px;padding:10px 22px;font:inherit;font-weight:700;cursor:pointer;transition:.2s}
+.tab[aria-selected="true"],.tab:hover{background:var(--butter);color:var(--ink);border-color:var(--butter)}
+.menuwrap{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:start}
+.items{display:grid;grid-template-columns:1fr;gap:0}
+.pics{display:grid;gap:16px;position:sticky;top:92px}
+.pics img{width:100%;object-fit:cover;border:1.5px solid var(--white);border-radius:22px;display:block}
+.pics.one img{aspect-ratio:3/4}.pics.two img{aspect-ratio:4/3}
+.item{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:20px 0;border-bottom:1px dashed rgba(248,250,245,.45)}
+.item h3{font-size:25px}
+.item .price{font-weight:700;color:var(--butter);font-variant-numeric:tabular-nums}
+.item p{grid-column:1/-1;opacity:.82;font-size:15px}
+.tag{display:inline-block;font-family:var(--body);font-size:11px;font-weight:800;letter-spacing:.08em;background:var(--tomato);color:var(--white);padding:3px 8px;border-radius:999px;vertical-align:middle;margin-left:8px}
+
+/* visit */
+.visit{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px}
+.hours{list-style:none;margin:20px 0;border-top:1.5px solid var(--ink)}
+.hours li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1.5px solid var(--ink);font-weight:600}
+.hours li.today{color:var(--tomato)}
+.card{background:var(--white);border:1.5px solid var(--ink);border-radius:26px;padding:32px;box-shadow:8px 8px 0 var(--ink)}
+.card h3{font-size:34px;margin-bottom:6px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+label{display:grid;gap:6px;font-weight:700;font-size:14px}
+label.full{grid-column:1/-1}
+input,select{font:inherit;font-weight:500;padding:12px 14px;border:1.5px solid var(--ink);border-radius:12px;background:var(--paper);color:var(--ink);width:100%}
+form .btn{grid-column:1/-1;margin-top:6px}
+.ok{display:none;margin-top:18px;background:var(--butter);border:1.5px solid var(--ink);border-radius:14px;padding:16px;font-weight:600}
+.ok.show{display:block}
+
+footer{background:var(--ink);color:var(--paper);padding:48px 0;font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer .logo{color:var(--white)}
+
+@media (max-width:860px){
+  .hero,.story,.visit,.menuwrap,.photos{grid-template-columns:1fr}
+  .pics{position:static;grid-template-columns:1fr 1fr}.pics.one{grid-template-columns:1fr}.pics.one img{aspect-ratio:4/3}
+  .cup{max-width:420px}
+  nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);flex-direction:column;padding:22px 20px;gap:18px;border-bottom:1.5px solid var(--ink)}
+  nav ul.open{display:flex}
+  .burger{display:block}
+  .nav .btn.book{display:none}
+  section{padding:60px 0}
+  form{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top"><i></i>Kiln &amp; Kettle</a>
+    <nav aria-label="Main">
+      <ul id="links">
+        <li><a href="#story">Our story</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+    </nav>
+    <a class="btn book" href="#visit">Book a table</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="links">Menu</button>
+  </div>
+</header>
+
+<main id="top">
+<div class="wrap hero">
+  <div>
+    <span class="status"><span class="dot" id="dot"></span><span id="statusText">Checking hours…</span></span>
+    <h1>Slow coffee.<br>Loud <em>flavour.</em></h1>
+    <p>A neighbourhood cafe in Lekki serving single-origin Nigerian coffee, wood-fired breakfasts and bakes that sell out by noon.</p>
+    <div class="cta">
+      <a class="btn" href="#menu">See the menu</a>
+      <a class="btn alt" href="#visit">Reserve a table</a>
+    </div>
+  </div>
+  <div class="cup"><img src="img/latte.jpg" alt="A latte with leaf art on a wooden cafe table" width="800" height="1200" fetchpriority="high">
+    <div class="stamp">ROASTED<br>IN-HOUSE<br>DAILY</div>
+  </div>
+</div>
+
+<div class="ticker" aria-hidden="true"><div id="tick"></div></div>
+
+<section id="story">
+  <div class="wrap story">
+    <div>
+      <p class="eyebrow">Our story</p>
+      <h2>Started with one oven and a borrowed grinder.</h2>
+      <p>Kiln &amp; Kettle opened in 2021 in a converted garage on Admiralty Way. We wanted a place where the coffee is taken seriously and nobody is rushed.</p>
+      <p>We buy beans from small farms in Kaduna and Mambilla, roast them every morning behind the counter, and bake with flour milled an hour from the city. Come for a flat white, stay for the jollof eggs.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>6</b>partner farms, paid fairly</div>
+      <div class="fact"><b>14h</b>from roaster to your cup, max</div>
+      <div class="fact"><b>4.9</b>average rating from 1,200 guests</div>
+      <div class="fact"><b>0</b>plastic straws. Ever.</div>
+    </div>
+    <div class="photos">
+      <img src="img/barista.jpg" alt="A barista pouring milk into a cup at the counter" loading="lazy">
+      <img src="img/interior.jpg" alt="Window bar with hanging lamps and stools" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <p class="eyebrow">What we serve</p>
+    <h2>The menu</h2>
+    <div class="tabs" role="tablist" aria-label="Menu sections">
+      <button class="tab" role="tab" aria-selected="true" data-k="coffee">Coffee</button>
+      <button class="tab" role="tab" aria-selected="false" data-k="kitchen">Kitchen</button>
+      <button class="tab" role="tab" aria-selected="false" data-k="bakes">Bakes</button>
+    </div>
+    <div class="menuwrap"><div class="items" id="items" role="tabpanel"></div><div class="pics" id="pics"></div></div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap visit">
+    <div>
+      <p class="eyebrow">Visit us</p>
+      <h2>Come hungry.</h2>
+      <p>14 Admiralty Way, Lekki Phase 1, Lagos<br>+234 800 000 0000 · hello@kilnandkettle.example</p>
+      <ul class="hours" id="hours"></ul>
+    </div>
+    <div class="card">
+      <h3>Reserve a table</h3>
+      <p>Tables for 2 to 8. We hold your spot for 15 minutes.</p>
+      <form id="form">
+        <label class="full">Name<input id="name" required placeholder="Your name"></label>
+        <label>Date<input id="date" type="date" required></label>
+        <label>Time<select id="time"><option>08:00</option><option>09:30</option><option>11:00</option><option>12:30</option><option>14:00</option><option>16:00</option><option>18:00</option></select></label>
+        <label class="full">Guests<select id="guests"><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></label>
+        <button class="btn" type="submit">Confirm reservation</button>
+      </form>
+      <div class="ok" id="ok" role="status"></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top"><i></i>Kiln &amp; Kettle</a>
+    <span>© 2026 Kiln &amp; Kettle. Demo website by Trojan.</span>
+  </div>
+</footer>
+
+<script>
+const MENU={
+  coffee:[["Flat White","Double ristretto, silky milk.","₦2,800"],["Kaduna Pour-over","Hand-poured, notes of cocoa and orange.","₦3,500","NEW"],["Cold Brew","Steeped 18 hours, served over ice.","₦3,200"],["Spiced Latte","Ginger, clove and a little honey.","₦3,000"],["Zobo Tonic","Hibiscus, espresso, sparkling water.","₦3,400"],["Hot Chocolate","Dark Ghanaian cocoa, whipped cream.","₦2,900"]],
+  kitchen:[["Jollof Eggs","Soft scramble, smoky jollof, grilled plantain.","₦6,500","POPULAR"],["Suya Toastie","Sourdough, spiced beef, onion, yaji butter.","₦7,200"],["Akara Benedict","Bean fritters, poached eggs, pepper hollandaise.","₦7,800"],["Garden Bowl","Grains, roasted veg, tahini, pickled onion.","₦6,900"],["Pap &amp; Moin Moin","Warm pap, steamed bean pudding, honey.","₦5,200"],["Chicken Waffle","Crisp waffle, fried chicken, maple pepper.","₦8,500"]],
+  bakes:[["Butter Croissant","Laminated for three days.","₦2,500"],["Coconut Buns","Toasted coconut, vanilla glaze.","₦2,200","SELLS OUT"],["Banana Loaf","Brown butter, walnuts.","₦2,400"],["Chin Chin Cookie","Nutmeg, browned butter, sea salt.","₦1,800"],["Puff Puff Doughnut","Cinnamon sugar, caramel dip.","₦2,000"],["Meat Pie","Flaky pastry, beef, potato, thyme.","₦2,300"]]
+};
+const items=document.getElementById('items');
+const PICS={coffee:[["hands","Hands holding a black ceramic mug"]],kitchen:[["jollof","Skillet of spiced rice with egg and crispy bits"],["suya","Toasted sesame sandwich with spiced beef and fries"]],bakes:[["pastry","Coconut-topped croissants on a wooden board"],["loaf","Sliced banana loaf with peanut butter frosting"]]};
+function show(k){
+  const pe=document.getElementById('pics');
+  pe.className='pics '+(PICS[k].length===1?'one':'two');
+  pe.innerHTML=PICS[k].map(([f,a])=>`<img src="img/${f}.jpg" alt="${a}" loading="lazy">`).join('');
+  items.innerHTML=MENU[k].map(([n,d,p,t])=>`<div class="item"><h3>${n}${t?`<span class="tag">${t}</span>`:''}</h3><span class="price">${p}</span><p>${d}</p></div>`).join('');
+}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===b));
+  show(b.dataset.k);
+}));
+show('coffee');
+
+// ticker
+const words=["Single-origin","Wood-fired","Baked at dawn","Lekki's living room","Roasted daily","Pour-over","Jollof eggs"];
+const tick=document.getElementById('tick');
+const row=words.map(w=>`<span>${w}</span><span>✺</span>`).join('');
+tick.innerHTML=row+row+row+row;
+
+// hours + open now (Lagos time)
+const H={0:[8,21],1:[7,19],2:[7,19],3:[7,19],4:[7,19],5:[7,20],6:[8,21]};
+const names=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const fmt=h=>(h>12?h-12:h)+(h>=12?"pm":"am");
+const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Africa/Lagos',weekday:'short',hour:'numeric',hour12:false}).formatToParts(new Date());
+const wd=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(parts.find(p=>p.type==='weekday').value);
+const hr=parseInt(parts.find(p=>p.type==='hour').value,10)%24;
+document.getElementById('hours').innerHTML=[1,2,3,4,5,6,0].map(d=>`<li class="${d===wd?'today':''}"><span>${names[d]}</span><span>${fmt(H[d][0])} – ${fmt(H[d][1])}</span></li>`).join('');
+const open=hr>=H[wd][0]&&hr<H[wd][1];
+document.getElementById('dot').classList.toggle('open',open);
+document.getElementById('statusText').textContent=open?`Open now · until ${fmt(H[wd][1])}`:`Closed · opens ${fmt(H[wd][0])}`;
+
+// form
+const d=document.getElementById('date');
+d.min=d.value=new Date().toISOString().slice(0,10);
+document.getElementById('form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const ok=document.getElementById('ok');
+  ok.textContent=`You're booked, ${document.getElementById('name').value}. Table for ${document.getElementById('guests').value} on ${d.value} at ${document.getElementById('time').value}. See you soon.`;
+  ok.classList.add('show');
+});
+
+// mobile nav
+const burger=document.getElementById('burger'),links=document.getElementById('links');
+burger.addEventListener('click',()=>{const o=links.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+links.addEventListener('click',()=>{links.classList.remove('open');burger.setAttribute('aria-expanded',false)});
+</script>
+<a href="/#websites" id="back-to-portfolio" style="position:fixed;left:14px;bottom:14px;z-index:50;background:#16161a;color:#f4f2ec;font:600 13px/1 system-ui,sans-serif;padding:11px 16px;border-radius:999px;text-decoration:none;box-shadow:0 4px 18px rgba(0,0,0,.25)">&larr; Back to portfolio</a>
+</body>
+</html>

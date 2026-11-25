@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Fuego</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Manrope:wght@400;600;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: loud sticker-style shop. Sunny yellow ground, hot pink and cobalt blocks, thick black outlines, working cart drawer. */
+:root{
+  --sun:#FFD93B; --pink:#FF4F9A; --cobalt:#2B50FF; --mint:#8CF0C4; --ink:#14110F; --white:#FFFDF5;
+  --display:"Unbounded", system-ui, sans-serif; --body:"Manrope", system-ui, sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--sun);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5}
+:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);line-height:1.02;text-wrap:balance}
+.b{border:3px solid var(--ink)}
+.shadow{box-shadow:6px 6px 0 var(--ink)}
+
+header{position:sticky;top:0;z-index:30;background:var(--sun);border-bottom:3px solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:12px}
+.logo{font-family:var(--display);font-weight:900;font-size:22px;text-decoration:none}
+.logo{display:inline-flex;align-items:flex-end;gap:0}
+.logo span{background:linear-gradient(180deg,#E01B0C 0%,#FF5A00 22%,#FFB000 44%,#FF5A00 66%,#E01B0C 100%);background-size:100% 300%;-webkit-background-clip:text;background-clip:text;color:transparent;padding:0 .06em;filter:drop-shadow(1.4px 0 0 var(--ink)) drop-shadow(-1.4px 0 0 var(--ink)) drop-shadow(0 1.4px 0 var(--ink)) drop-shadow(0 -1.4px 0 var(--ink));animation:blaze 2.4s linear infinite}
+@keyframes blaze{to{background-position:0 -300%}}
+.demon{width:1.2em;height:1.2em;margin:0 0 .02em 4px;overflow:visible;animation:dshake 2.4s linear infinite;transform-origin:50% 80%}
+@keyframes dshake{0%,50%{transform:rotate(0) translateY(0)}54%{transform:rotate(-7deg) translateY(-2px)}60%{transform:rotate(7deg) translateY(0)}66%{transform:rotate(-6deg) translateY(-2px)}72%{transform:rotate(5deg) translateY(0)}78%{transform:rotate(-3deg)}84%,100%{transform:rotate(0)}}
+.nav ul{display:flex;gap:26px;list-style:none;font-weight:800}
+.nav a{text-decoration:none}
+.nav ul a:hover{text-decoration:underline;text-decoration-thickness:3px}
+.cartbtn{background:var(--ink);color:var(--white);border:0;font:inherit;font-weight:800;padding:12px 20px;border-radius:999px;cursor:pointer;display:flex;gap:10px;align-items:center}
+.cartbtn b{background:var(--pink);color:var(--ink);border-radius:999px;min-width:26px;height:26px;display:grid;place-items:center;font-size:13px}
+.cartbtn.pop{animation:pop .35s}
+@keyframes pop{50%{transform:scale(1.12) rotate(-3deg)}}
+
+.hero{padding:56px 0 64px;display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+.pill{display:inline-block;background:var(--white);padding:8px 16px;border-radius:999px;font-weight:800;font-size:14px;transform:rotate(-2deg)}
+.hero h1{font-size:clamp(46px,8vw,104px);font-weight:900;margin:22px 0;letter-spacing:-.03em}
+.hero h1 mark{background:var(--pink);color:var(--ink);padding:0 .12em;display:inline-block;transform:rotate(-2deg);border:3px solid var(--ink)}
+.hero p{font-size:20px;max-width:44ch;margin-bottom:28px;font-weight:600}
+.btn{display:inline-block;background:var(--cobalt);color:var(--white);font:inherit;font-weight:800;padding:16px 28px;border:3px solid var(--ink);border-radius:16px;text-decoration:none;cursor:pointer;box-shadow:5px 5px 0 var(--ink);transition:transform .15s, box-shadow .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+.btn.pink{background:var(--pink);color:var(--ink)}
+.stage{position:relative;aspect-ratio:4/5;background:var(--cobalt);border-radius:36px;display:grid;place-items:center;overflow:hidden}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%;transition:transform .6s}
+.stage:hover .hero-photo{transform:scale(1.04)}
+.burst{position:absolute;top:5%;left:5%;width:104px;height:104px;background:var(--sun);border:3px solid var(--ink);border-radius:50%;display:grid;place-items:center;text-align:center;font-family:var(--display);font-weight:900;font-size:14px;line-height:1.1;transform:rotate(14deg);z-index:3}
+
+.ticker{background:var(--ink);color:var(--sun);overflow:hidden;white-space:nowrap;padding:14px 0;font-family:var(--display);font-weight:700;font-size:18px;border-block:3px solid var(--ink)}
+.ticker div{display:inline-block;animation:slide 30s linear infinite}
+.ticker span{margin:0 20px}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:84px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:34px}
+h2{font-size:clamp(32px,5vw,60px);font-weight:900;letter-spacing:-.02em}
+.filters{display:flex;gap:10px;flex-wrap:wrap}
+.chip{font:inherit;font-weight:800;color:var(--ink);padding:10px 18px;background:var(--white);border:3px solid var(--ink);border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--white)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px}
+.card{background:var(--white);border:3px solid var(--ink);border-radius:26px;overflow:hidden;box-shadow:6px 6px 0 var(--ink);display:flex;flex-direction:column;transition:transform .2s}
+.card:hover{transform:translateY(-6px) rotate(-.6deg)}
+.card .art{aspect-ratio:1;border-bottom:3px solid var(--ink);position:relative;overflow:hidden;container-type:inline-size}
+.card .art img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.card:hover .art img{transform:scale(1.05)}
+.plabel{position:absolute;left:33.9%;top:45.8%;width:32.4%;height:28%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1.1cqw;background:#14110F;color:#FFFDF5;pointer-events:none;transition:transform .5s;overflow:hidden}
+.card:hover .plabel{transform:scale(1.05)}
+.plabel b{font-family:"Permanent Marker",var(--display);font-weight:400;font-size:5.4cqw;letter-spacing:.01em;line-height:1;transform:rotate(-3deg)}
+.plabel i{display:block;width:60%;height:.9cqw;border-radius:1cqw}
+.plabel span{font-weight:800;font-size:2.8cqw;line-height:1.1;padding:0 1cqw}
+.plabel small{font-weight:800;font-size:2.1cqw;letter-spacing:.14em;text-transform:uppercase}
+.heat{z-index:2;position:absolute;left:12px;top:12px;background:var(--white);border:3px solid var(--ink);border-radius:999px;padding:3px 10px;font-weight:800;font-size:13px}
+.card .body{padding:18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:19px;font-weight:700}
+.card p{font-size:15px;font-weight:600;opacity:.8;flex:1}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.price{font-family:var(--display);font-weight:700;font-variant-numeric:tabular-nums}
+.add{background:var(--ink);color:var(--white);border:0;font:inherit;font-weight:800;padding:10px 16px;border-radius:12px;cursor:pointer}
+.add:hover{background:var(--pink);color:var(--ink)}
+
+.plate .grid2{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.plate img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border:3px solid var(--ink);border-radius:28px;box-shadow:8px 8px 0 var(--ink);display:block}
+.plate p.lead{font-weight:600;font-size:19px;max-width:42ch;margin-bottom:22px}
+.pairs{list-style:none;display:grid;gap:12px}
+.pairs li{background:var(--white);border:3px solid var(--ink);border-radius:18px;padding:14px 18px;font-weight:600}
+.pairs b{font-family:var(--display);font-size:15px;display:block;margin-bottom:2px}
+.why{background:var(--pink);border-block:3px solid var(--ink)}
+.why .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:34px}
+.why .col{background:var(--white);border:3px solid var(--ink);border-radius:24px;padding:26px;box-shadow:6px 6px 0 var(--ink)}
+.why .col b{font-family:var(--display);font-size:48px;display:block;color:var(--cobalt);line-height:1}
+.why h3{font-size:20px;margin:10px 0 6px}
+
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px}
+.rev{background:var(--mint);border:3px solid var(--ink);border-radius:24px;padding:24px;box-shadow:6px 6px 0 var(--ink)}
+.rev:nth-child(2){background:var(--white)}
+.rev .stars{letter-spacing:3px;font-size:18px}
+.rev p{margin:10px 0 14px;font-weight:600}
+.rev small{font-weight:800}
+
+.news{background:var(--cobalt);color:var(--white);border-block:3px solid var(--ink);text-align:center}
+.news h2{margin-bottom:12px}
+.news form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.news input{font:inherit;font-weight:600;padding:16px 20px;border:3px solid var(--ink);border-radius:16px;min-width:min(340px,100%);background:var(--white);color:var(--ink)}
+.msg{margin-top:16px;font-weight:800;min-height:1.5em}
+
+footer{padding:36px 0;font-weight:700}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* cart drawer */
+.scrim{position:fixed;inset:0;background:rgba(20,17,15,.55);opacity:0;pointer-events:none;transition:.25s;z-index:40}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--white);border-left:3px solid var(--ink);z-index:50;transform:translateX(100%);transition:transform .3s;display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.drawer header{position:static;display:flex;justify-content:space-between;align-items:center;padding:18px 20px;background:var(--pink)}
+.drawer h2{font-size:24px}
+.x{background:var(--ink);color:var(--white);border:0;width:38px;height:38px;border-radius:50%;font-size:18px;cursor:pointer}
+.lines{flex:1;overflow:auto;padding:12px 20px}
+.line{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:2px dashed var(--ink)}
+.line .sw{width:56px;height:56px;border-radius:14px;border:3px solid var(--ink);overflow:hidden;background:var(--sun)}
+.line .sw img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.9);transform-origin:50% 54%}
+.line b{display:block;font-size:15px}
+.qty{display:flex;align-items:center;gap:8px;margin-top:4px}
+.qty button{color:var(--ink);font:inherit;font-weight:800;line-height:1;width:26px;height:26px;border-radius:8px;border:2px solid var(--ink);background:var(--sun);font-weight:800;cursor:pointer}
+.empty{padding:40px 0;text-align:center;font-weight:700}
+.foot{padding:18px 20px;border-top:3px solid var(--ink);background:var(--sun)}
+.tot{display:flex;justify-content:space-between;font-family:var(--display);font-weight:700;margin-bottom:14px}
+.foot .btn{width:100%;text-align:center}
+.thanks{margin-top:12px;font-weight:800;text-align:center}
+
+@media (max-width:860px){
+  .hero,.plate .grid2{grid-template-columns:1fr}
+  .why .cols,.reviews{grid-template-columns:1fr}
+  .nav ul{display:none}
+  section{padding:56px 0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="El Fuego">EL <span>FUEGO</span><svg class="demon" viewBox="0 0 40 40" aria-hidden="true"><path d="M9 14 L6 2 L18 8Z" fill="#7A2FE0" stroke="#14110F" stroke-width="2" stroke-linejoin="round"/><path d="M31 14 L34 2 L22 8Z" fill="#7A2FE0" stroke="#14110F" stroke-width="2" stroke-linejoin="round"/><circle cx="20" cy="23" r="15" fill="#A066FF" stroke="#14110F" stroke-width="2"/><path d="M9.5 16.5 L17 20 M30.5 16.5 L23 20" stroke="#14110F" stroke-width="2.3" stroke-linecap="round"/><path d="M12.1 23 Q14 20.5 15.9 23 Q14 25.5 12.1 23Z" fill="#14110F" stroke="#14110F" stroke-width="1.4" stroke-linejoin="round"><animate attributeName="d" dur="2.4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.35;0.5;0.8;0.95;1" keySplines="0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1" values="M12.1 23 Q14 20.5 15.9 23 Q14 25.5 12.1 23Z;M12.1 23 Q14 20.5 15.9 23 Q14 25.5 12.1 23Z;M11 24 Q14 19.5 17 24 Q14 21.8 11 24Z;M11 24 Q14 19.5 17 24 Q14 21.8 11 24Z;M12.1 23 Q14 20.5 15.9 23 Q14 25.5 12.1 23Z;M12.1 23 Q14 20.5 15.9 23 Q14 25.5 12.1 23Z"/></path><path d="M24.1 23 Q26 20.5 27.9 23 Q26 25.5 24.1 23Z" fill="#14110F" stroke="#14110F" stroke-width="1.4" stroke-linejoin="round"><animate attributeName="d" dur="2.4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.35;0.5;0.8;0.95;1" keySplines="0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1" values="M24.1 23 Q26 20.5 27.9 23 Q26 25.5 24.1 23Z;M24.1 23 Q26 20.5 27.9 23 Q26 25.5 24.1 23Z;M23 24 Q26 19.5 29 24 Q26 21.8 23 24Z;M23 24 Q26 19.5 29 24 Q26 21.8 23 24Z;M24.1 23 Q26 20.5 27.9 23 Q26 25.5 24.1 23Z;M24.1 23 Q26 20.5 27.9 23 Q26 25.5 24.1 23Z"/></path><path d="M11 29 Q20 35.5 29 29 Q20 35.5 11 29Z" fill="#2A0A3A" fill-opacity="0" stroke="#14110F" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"><animate attributeName="d" dur="2.4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.35;0.5;0.8;0.95;1" keySplines="0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1" values="M11 29 Q20 35.5 29 29 Q20 35.5 11 29Z;M11 29 Q20 35.5 29 29 Q20 35.5 11 29Z;M10.5 28.5 Q20 41 29.5 28.5 Q20 30.5 10.5 28.5Z;M10.5 28.5 Q20 41 29.5 28.5 Q20 30.5 10.5 28.5Z;M11 29 Q20 35.5 29 29 Q20 35.5 11 29Z;M11 29 Q20 35.5 29 29 Q20 35.5 11 29Z"/><animate attributeName="fill-opacity" dur="2.4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.35;0.5;0.8;0.95;1" keySplines="0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1" values="0;0;1;1;0;0"/></path><path d="M13 29.6 Q20 32 27 29.6 L26 31.6 Q20 33.6 14 31.6Z" fill="#fff" opacity="0"><animate attributeName="opacity" dur="2.4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.35;0.5;0.8;0.95;1" keySplines="0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1" values="0;0;1;1;0;0"/></path><ellipse cx="20" cy="35" rx="4.2" ry="2.2" fill="#FF5C9A" opacity="0"><animate attributeName="opacity" dur="2.4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.35;0.5;0.8;0.95;1" keySplines="0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1" values="0;0;1;1;0;0"/></ellipse></svg></a>
+    <ul>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#why">Why us</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+    </ul>
+    <button class="cartbtn" id="openCart" aria-label="Open cart">Cart <b id="count">0</b></button>
+  </div>
+</header>
+
+<main id="top">
+<div class="wrap hero">
+  <div>
+    <span class="pill b">Small-batch · Made in Lagos</span>
+    <h1>Turn up the <mark>heat.</mark></h1>
+    <p>Hand-made chilli oils and pepper sauces from real Nigerian peppers. No preservatives, no shortcuts, just flavour that wakes up your plate.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <a class="btn" href="#shop">Shop the sauces</a>
+      <a class="btn pink" href="#why">Why it's different</a>
+    </div>
+  </div>
+  <div class="stage b shadow" aria-hidden="true">
+    <div class="burst">FREE<br>DELIVERY<br>OVER ₦20K</div>
+    <img class="hero-photo" src="img/hero.jpg" alt="Three El Fuego hot sauce bottles: habanero, peri peri and jalapeño" width="1000" height="1606" fetchpriority="high">
+  </div>
+</div>
+
+<div class="ticker" aria-hidden="true"><div id="tick"></div></div>
+
+<section id="shop">
+  <div class="wrap">
+    <div class="head">
+      <h2>Pick your fire</h2>
+      <div class="filters" id="filters">
+        <button class="chip" aria-pressed="true" data-f="all">All</button>
+        <button class="chip" aria-pressed="false" data-f="mild">Mild</button>
+        <button class="chip" aria-pressed="false" data-f="hot">Hot</button>
+        <button class="chip" aria-pressed="false" data-f="extra">Extra hot</button>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="plate">
+  <div class="wrap grid2">
+    <img src="img/lifestyle.jpg" alt="Plate of grilled fish, prawns and fried rice" loading="lazy" width="1000" height="1000">
+    <div>
+      <h2>Goes on everything.</h2>
+      <p class="lead">One spoon turns a plain plate into the best thing you'll eat this week.</p>
+      <ul class="pairs">
+        <li><b>Grilled fish</b>Brush on Scotch Bonnet Reaper before it hits the fire.</li>
+        <li><b>Fried rice and prawns</b>Stir in Garlic Crunch for a crispy, savoury kick.</li>
+        <li><b>Eggs, yam and akara</b>A drizzle of Suya Fire Oil. Trust us.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <h2>Why people can't stop</h2>
+    <div class="cols">
+      <div class="col"><b>100%</b><h3>Real peppers</h3><p>Scotch bonnet, tatashe and ata rodo, bought from farmers in Ibadan and Ogun.</p></div>
+      <div class="col"><b>48h</b><h3>Fresh batches</h3><p>Every jar is made to order and ships within two days. Nothing sits on a shelf.</p></div>
+      <div class="col"><b>0</b><h3>Preservatives</h3><p>Just peppers, oil, salt and spice. If you can't pronounce it, it isn't in there.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <h2>People are talking</h2>
+    <div class="reviews">
+      <div class="rev b"><div class="stars">★★★★★</div><p>The Suya Fire oil on my fried rice? I finished the jar in a week. Ordering three more.</p><small>Amaka, Lagos</small></div>
+      <div class="rev b"><div class="stars">★★★★★</div><p>Hot but not stupid hot. You actually taste the pepper. Delivery was quick too.</p><small>Tunde, Abuja</small></div>
+      <div class="rev b"><div class="stars">★★★★★</div><p>Bought it as a gift and now my mum wants her own. The packaging is beautiful.</p><small>Ngozi, Port Harcourt</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="news">
+  <div class="wrap">
+    <h2>Get 10% off your first jar</h2>
+    <p>Join the list for new flavours and surprise drops.</p>
+    <form id="news">
+      <input id="email" type="email" required placeholder="you@email.com" aria-label="Email address">
+      <button class="btn pink" type="submit">Send me the code</button>
+    </form>
+    <div class="msg" id="msg" role="status"></div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><a class="logo" href="#top" aria-label="El Fuego" style="color:var(--ink)">EL <span>FUEGO</span><svg class="demon" viewBox="0 0 40 40" aria-hidden="true"><path d="M9 14 L6 2 L18 8Z" fill="#7A2FE0" stroke="#14110F" stroke-width="2" stroke-linejoin="round"/><path d="M31 14 L34 2 L22 8Z" fill="#7A2FE0" stroke="#14110F" stroke-width="2" stroke-linejoin="round"/><circle cx="20" cy="23" r="15" fill="#A066FF" stroke="#14110F" stroke-width="2"/><path d="M9.5 16.5 L17 20 M30.5 16.5 L23 20" stroke="#14110F" stroke-width="2.3" stroke-linecap="round"/><path d="M12.1 23 Q14 20.5 15.9 23 Q14 25.5 12.1 23Z" fill="#14110F" stroke="#14110F" stroke-width="1.4" stroke-linejoin="round"><animate attributeName="d" dur="2.4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.35;0.5;0.8;0.95;1" keySplines="0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1" values="M12.1 23 Q14 20.5 15.9 23 Q14 25.5 12.1 23Z;M12.1 23 Q14 20.5 15.9 23 Q14 25.5 12.1 23Z;M11 24 Q14 19.5 17 24 Q14 21.8 11 24Z;M11 24 Q14 19.5 17 24 Q14 21.8 11 24Z;M12.1 23 Q14 20.5 15.9 23 Q14 25.5 12.1 23Z;M12.1 23 Q14 20.5 15.9 23 Q14 25.5 12.1 23Z"/></path><path d="M24.1 23 Q26 20.5 27.9 23 Q26 25.5 24.1 23Z" fill="#14110F" stroke="#14110F" stroke-width="1.4" stroke-linejoin="round"><animate attributeName="d" dur="2.4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.35;0.5;0.8;0.95;1" keySplines="0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1" values="M24.1 23 Q26 20.5 27.9 23 Q26 25.5 24.1 23Z;M24.1 23 Q26 20.5 27.9 23 Q26 25.5 24.1 23Z;M23 24 Q26 19.5 29 24 Q26 21.8 23 24Z;M23 24 Q26 19.5 29 24 Q26 21.8 23 24Z;M24.1 23 Q26 20.5 27.9 23 Q26 25.5 24.1 23Z;M24.1 23 Q26 20.5 27.9 23 Q26 25.5 24.1 23Z"/></path><path d="M11 29 Q20 35.5 29 29 Q20 35.5 11 29Z" fill="#2A0A3A" fill-opacity="0" stroke="#14110F" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"><animate attributeName="d" dur="2.4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.35;0.5;0.8;0.95;1" keySplines="0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1" values="M11 29 Q20 35.5 29 29 Q20 35.5 11 29Z;M11 29 Q20 35.5 29 29 Q20 35.5 11 29Z;M10.5 28.5 Q20 41 29.5 28.5 Q20 30.5 10.5 28.5Z;M10.5 28.5 Q20 41 29.5 28.5 Q20 30.5 10.5 28.5Z;M11 29 Q20 35.5 29 29 Q20 35.5 11 29Z;M11 29 Q20 35.5 29 29 Q20 35.5 11 29Z"/><animate attributeName="fill-opacity" dur="2.4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.35;0.5;0.8;0.95;1" keySplines="0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1" values="0;0;1;1;0;0"/></path><path d="M13 29.6 Q20 32 27 29.6 L26 31.6 Q20 33.6 14 31.6Z" fill="#fff" opacity="0"><animate attributeName="opacity" dur="2.4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.35;0.5;0.8;0.95;1" keySplines="0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1" values="0;0;1;1;0;0"/></path><ellipse cx="20" cy="35" rx="4.2" ry="2.2" fill="#FF5C9A" opacity="0"><animate attributeName="opacity" dur="2.4s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.35;0.5;0.8;0.95;1" keySplines="0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1;0.45 0 0.2 1" values="0;0;1;1;0;0"/></ellipse></svg></a><span>© 2026 El Fuego. Demo website by Trojan.</span></div></footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping cart">
+  <header><h2>Your cart</h2><button class="x" id="closeCart" aria-label="Close cart">✕</button></header>
+  <div class="lines" id="lines"></div>
+  <div class="foot">
+    <div class="tot"><span>Total</span><span id="total">₦0</span></div>
+    <button class="btn" id="checkout">Checkout</button>
+    <div class="thanks" id="thanks" role="status"></div>
+  </div>
+</aside>
+
+<script>
+const P=[
+ {f:"suya",id:1,n:"Suya Fire Oil",d:"Smoky yaji spice in chilli oil. Magic on eggs and rice.",p:5500,h:"hot",c:"#FF4F9A",bg:"#FFD93B"},
+ {f:"tatashe",id:2,n:"Green Tatashe",d:"Fresh green peppers, lime and basil. Bright and gentle.",p:4800,h:"mild",c:"#2FBF71",bg:"#FFFDF5"},
+ {f:"reaper",id:3,n:"Scotch Bonnet Reaper",d:"Pure scotch bonnet. Only for the brave.",p:6200,h:"extra",c:"#E02B1F",bg:"#8CF0C4"},
+ {f:"garlic",id:4,n:"Garlic Crunch",d:"Crispy garlic, shallots and mild chilli. Put it on everything.",p:5200,h:"mild",c:"#F5A623",bg:"#FF4F9A"},
+ {f:"ata",id:5,n:"Ata Rodo Smoke",d:"Smoked habanero, tomato and ginger. A slow burn.",p:5900,h:"hot",c:"#FF7A1A",bg:"#FFFDF5"},
+ {f:"mango",id:6,n:"Mango Heat",d:"Sweet mango meets scotch bonnet. Dangerous on grilled fish.",p:5600,h:"hot",c:"#FFB400",bg:"#2B50FF"}
+];
+const HC={mild:"#5BD66F",hot:"#FF9A1F",extra:"#FF3B2F"};
+const HL={mild:"Mild 🌶",hot:"Hot 🌶🌶",extra:"Extra hot 🌶🌶🌶"};
+const naira=n=>"₦"+n.toLocaleString("en-NG");
+
+const grid=document.getElementById('grid');
+function render(f){
+  grid.innerHTML=P.filter(x=>f==='all'||x.h===f).map(x=>`<article class="card"><div class="art" style="background:${x.bg}"><span class="heat">${HL[x.h]}</span><img src="img/${x.f}.jpg" alt="${x.n} sauce bottle" width="900" height="900" loading="lazy"><div class="plabel"><b>El Fuego</b><i style="background:${HC[x.h]}"></i><span>${x.n}</span><small style="color:${HC[x.h]}">${{mild:"Mild",hot:"Hot",extra:"Extra hot"}[x.h]}</small></div></div><div class="body"><h3>${x.n}</h3><p>${x.d}</p><div class="row"><span class="price">${naira(x.p)}</span><button class="add" data-id="${x.id}">Add +</button></div></div></article>`).join('');
+}
+render('all');
+document.getElementById('filters').addEventListener('click',e=>{
+  const b=e.target.closest('.chip');if(!b)return;
+  document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c===b));
+  render(b.dataset.f);
+});
+
+// ticker
+const w=["Small batch","No preservatives","Made in Lagos","Real peppers","Free delivery over ₦20K","Fresh in 48 hours"];
+const row=w.map(x=>`<span>${x}</span><span>✱</span>`).join('');
+document.getElementById('tick').innerHTML=row+row+row+row;
+
+// cart
+let cart={};
+const $=id=>document.getElementById(id);
+function draw(){
+  const ids=Object.keys(cart);
+  const n=ids.reduce((s,i)=>s+cart[i],0);
+  $('count').textContent=n;
+  let t=0;
+  $('lines').innerHTML=ids.length?ids.map(i=>{const x=P.find(p=>p.id==i);t+=x.p*cart[i];return `<div class="line"><div class="sw"><img src="img/${x.f}.jpg" alt=""></div><div><b>${x.n}</b><div class="qty"><button data-d="-1" data-id="${i}" aria-label="Less">−</button><span>${cart[i]}</span><button data-d="1" data-id="${i}" aria-label="More">+</button></div></div><b>${naira(x.p*cart[i])}</b></div>`}).join(''):`<div class="empty">Your cart is empty.<br>Go pick some fire.</div>`;
+  $('total').textContent=naira(t);
+}
+function open(v){$('drawer').classList.toggle('on',v);$('scrim').classList.toggle('on',v)}
+grid.addEventListener('click',e=>{
+  const b=e.target.closest('.add');if(!b)return;
+  cart[b.dataset.id]=(cart[b.dataset.id]||0)+1;draw();
+  const cb=$('openCart');cb.classList.remove('pop');void cb.offsetWidth;cb.classList.add('pop');
+});
+$('lines').addEventListener('click',e=>{
+  const b=e.target.closest('[data-d]');if(!b)return;
+  const id=b.dataset.id;cart[id]+=+b.dataset.d;if(cart[id]<=0)delete cart[id];draw();
+});
+$('openCart').onclick=()=>open(true);$('closeCart').onclick=()=>open(false);$('scrim').onclick=()=>open(false);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')open(false)});
+$('checkout').onclick=()=>{
+  $('thanks').textContent=Object.keys(cart).length?"Demo only: no payment taken. In a real shop this goes to checkout.":"Add something first.";
+};
+$('news').addEventListener('submit',e=>{e.preventDefault();$('msg').textContent="Code FUEGO10 is yours. Check your inbox.";});
+draw();
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.querySelectorAll('.demon').forEach(v=>{v.pauseAnimations();v.setCurrentTime(0)});
+</script>
+<a href="/#websites" id="back-to-portfolio" style="position:fixed;left:14px;bottom:14px;z-index:50;background:#16161a;color:#f4f2ec;font:600 13px/1 system-ui,sans-serif;padding:11px 16px;border-radius:999px;text-decoration:none;box-shadow:0 4px 18px rgba(0,0,0,.25)">&larr; Back to portfolio</a>
+</body>
+</html>

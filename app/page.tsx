@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { DesktopShot, PhoneShot } from "@/components/Shot";
 import Reveal from "@/components/Reveal";
+import { demos, site } from "@/lib/data";
 
 export default function Home() {
   return (
@@ -102,6 +103,76 @@ export default function Home() {
             />
           </div>
         </Link>
+        </Reveal>
+      </section>
+
+      <section
+        id="websites"
+        aria-labelledby="websites-heading"
+        className="mx-auto max-w-5xl scroll-mt-4 border-t border-line px-6 py-16 sm:px-8 sm:py-24"
+      >
+        <Reveal>
+          <p className="text-sm text-ink-soft">Freelance - 2026</p>
+          <h2
+            id="websites-heading"
+            className="mt-2 font-display text-3xl leading-tight sm:text-4xl"
+          >
+            Websites for small businesses
+          </h2>
+          <p className="mt-3 max-w-xl text-ink-soft">
+            I build fast, mobile-friendly websites for cafes, brands and
+            creatives. These three demo projects each have their own look and
+            work on a phone.
+          </p>
+        </Reveal>
+
+        <ul className="mt-10 grid gap-8 md:grid-cols-3">
+          {demos.map((demo, i) => (
+            <li key={demo.name}>
+              <Reveal delay={i * 80}>
+                <a
+                  href={demo.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-card focus-ring group block rounded-sm"
+                >
+                  <div className="shot-frame overflow-hidden rounded-md border border-line bg-paper-dim">
+                    <Image
+                      src={demo.image}
+                      alt={demo.alt}
+                      width={demo.width}
+                      height={demo.height}
+                      className="shot-image aspect-[3/2] h-auto w-full object-cover"
+                      sizes="(min-width: 768px) 320px, 100vw"
+                    />
+                  </div>
+                  <p className="mt-4 text-sm text-ink-soft">
+                    Demo - {demo.kind}
+                  </p>
+                  <h3 className="mt-1 font-display text-2xl leading-tight">
+                    {demo.name}
+                  </h3>
+                  <p className="mt-2 text-sm text-ink-soft">{demo.blurb}</p>
+                  <span className="project-link mt-3 inline-flex items-center gap-2 text-sm font-medium text-accent underline decoration-accent-soft underline-offset-4 group-hover:decoration-accent">
+                    View the demo <span aria-hidden="true">↗</span>
+                  </span>
+                </a>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
+
+        <Reveal>
+          <p className="mt-12 max-w-xl text-lg leading-relaxed text-ink-soft">
+            Want one for your business?{" "}
+            <a
+              href={`mailto:${site.email}?subject=Website%20project`}
+              className="focus-ring rounded-sm text-ink underline decoration-line underline-offset-4 hover:decoration-ink"
+            >
+              Email me
+            </a>{" "}
+            and tell me what you need.
+          </p>
         </Reveal>
       </section>
 
