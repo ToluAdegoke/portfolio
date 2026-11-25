@@ -1,7 +1,7 @@
 import { site } from "@/lib/data";
 
 const links = [
-  { href: `mailto:${site.email}`, label: site.email },
+  { href: site.cv, label: "CV" },
   { href: site.github, label: "GitHub" },
   { href: site.linkedin, label: "LinkedIn" },
   { href: site.twitter, label: "Twitter / X" },
@@ -9,28 +9,36 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer className="bg-ink text-paper">
-      <div className="mx-auto max-w-5xl px-6 py-16 sm:px-8">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="font-display text-4xl leading-tight sm:text-5xl">Let&rsquo;s build something.</p>
-            <p className="mt-3 max-w-sm text-sm text-paper/70">
-              Open to conversations about products, internships, and
-              freelance projects.
-            </p>
-          </div>
-          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+    <footer id="contact" className="bg-ink text-paper">
+      <div className="mx-auto max-w-6xl px-6 pb-10 pt-20 sm:px-8 sm:pt-24">
+        <p className="label !text-paper/50">Contact</p>
+        <h2 className="mt-4 max-w-3xl text-5xl font-semibold leading-[1.02] sm:text-7xl">
+          Make we build{" "}
+          <span className="text-pop">something.</span>
+        </h2>
+        <p className="note mt-3 rotate-[-2deg] text-2xl !text-paper/70">
+          (that&rsquo;s Pidgin for &ldquo;let&rsquo;s build something&rdquo;)
+        </p>
+        <p className="mt-8 max-w-lg text-lg text-paper/70">
+          Got a role, a project or a half-baked idea? Send it over.
+        </p>
+        <a
+          href={`mailto:${site.email}`}
+          className="footer-link focus-ring mt-6 inline-block rounded-sm text-lg text-paper/90 sm:text-2xl"
+        >
+          {site.email} <span aria-hidden="true">→</span>
+        </a>
+
+        <div className="mt-20 flex flex-col gap-6 border-t border-paper/15 pt-6 text-sm text-paper/60 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Tolulope Adegoke · Ibadan, Nigeria</p>
+          <ul className="flex flex-wrap gap-6">
             {links.map((link) => (
               <li key={link.label}>
                 <a
                   href={link.href}
-                  className="footer-link focus-ring rounded-sm underline decoration-paper/30 underline-offset-4 transition-colors hover:decoration-paper"
-                  target={link.href.startsWith("http") ? "_blank" : undefined}
-                  rel={
-                    link.href.startsWith("http")
-                      ? "noreferrer noopener"
-                      : undefined
-                  }
+                  className="footer-link focus-ring rounded-sm transition-colors hover:text-paper"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {link.label}
                 </a>
@@ -38,9 +46,6 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <p className="mt-10 text-xs text-paper/50">
-          © {new Date().getFullYear()} Tolulope Adegoke. Built with Next.js.
-        </p>
       </div>
     </footer>
   );

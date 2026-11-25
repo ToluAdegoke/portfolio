@@ -62,7 +62,7 @@ export default function About() {
       <div className="mt-14 border-t border-line pt-10">
         <h2 className="font-display text-2xl">Currently</h2>
         <ul className="mt-4 space-y-2 text-ink-soft">
-          <li>Co-Founder, Product &amp; Engineering at Sabi</li>
+          <li>Chief Product Officer &amp; Co-Founder at Sabi</li>
           <li>Co-Founder &amp; Software Engineer at Genpay</li>
           <li>Computer Science Commissioner, NACOS at Bowen University</li>
         </ul>

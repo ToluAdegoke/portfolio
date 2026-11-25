@@ -5,12 +5,12 @@ export const site = {
   github: "https://github.com/ToluAdegoke",
   linkedin: "https://www.linkedin.com/in/tolulope-adegoke-a64b89283",
   twitter: "https://twitter.com/dev_Tolu",
+  cv: "/Adegoke_Tolulope_Resume.pdf",
+  sabi: "https://sabiexam.com",
 };
 
 export const nav = [
-  { href: "/", label: "Home" },
-  { href: "/work/sabi", label: "Sabi" },
-  { href: "/work/sonix", label: "Sonix" },
+  { href: "/#work", label: "Work" },
   { href: "/#websites", label: "Websites" },
   { href: "/about", label: "About" },
 ];
@@ -48,28 +48,21 @@ export const demos = [
   },
 ];
 
-export const stack = [
-  "Next.js",
-  "React",
-  "TypeScript",
-  "Tailwind CSS",
-  "Flutter",
-  "Supabase",
-  "Paystack",
-  "Vercel",
-];
-
-export const services = [
+export const principles = [
   {
-    title: "Websites for businesses",
-    body: "Clean, fast sites for cafes, brands and creatives that look good on a phone and are easy to update.",
+    title: "Ship to real people early",
+    body: "Sabi went from a hypothesis to 500+ students. Real usage tells me what to build next better than any roadmap.",
   },
   {
-    title: "Web apps",
-    body: "Dashboards, booking and checkout flows built with Next.js, React and Supabase.",
+    title: "Do it properly where it counts",
+    body: "Sabi's paywall is enforced server-side with row-level security, not just hidden in the UI. Slower to build, but the only version worth shipping.",
   },
   {
-    title: "Mobile apps",
-    body: "Cross-platform apps built with Flutter, from first screens to a working product.",
+    title: "Don't solve problems you don't have",
+    body: "Streaks and study plans run on Lagos time instead of full timezone handling. Our users don't need it yet, so we didn't build it.",
+  },
+  {
+    title: "Use AI to move faster, not think less",
+    body: "AI is in the product where it helps students learn, and in my workflow where it speeds up frontend work. The product decisions stay mine.",
   },
 ];

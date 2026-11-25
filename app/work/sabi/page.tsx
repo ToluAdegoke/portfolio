@@ -3,6 +3,7 @@ import { DesktopShot } from "@/components/Shot";
 import CaseSection from "@/components/CaseSection";
 import Callout from "@/components/Callout";
 import Stat from "@/components/Stat";
+import { site } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Sabi - Tolulope Adegoke",
@@ -19,8 +20,16 @@ export default function SabiCaseStudy() {
       </h1>
       <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
         An AI-powered JAMB and WAEC exam-prep platform for Nigerian
-        secondary school students. Co-Founder, Product &amp; Engineering.
+        secondary school students. Chief Product Officer &amp; Co-Founder.
       </p>
+      <a
+        href={site.sabi}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn btn-primary focus-ring mt-7"
+      >
+        Try Sabi live at sabiexam.com <span aria-hidden="true">↗</span>
+      </a>
 
       <div className="mt-12">
         <DesktopShot
@@ -181,23 +190,25 @@ export default function SabiCaseStudy() {
 
         <CaseSection index="10" title="Traction">
           <p>
-            Sabi has real users today, and the data is early enough that
-            it&rsquo;s telling me more about where the funnel breaks than
-            about product-market fit. I&rsquo;d rather show that clearly
-            than dress it up.
+            Sabi has grown to more than 500 students. The funnel numbers
+            below come from an earlier measurement, taken when we had 141
+            users. That early data told me more about where the funnel
+            breaks than about product-market fit, and I&rsquo;d rather show
+            it clearly than dress it up.
           </p>
 
-          <div className="grid grid-cols-2 gap-x-6 gap-y-6 py-4 sm:grid-cols-4">
-            <Stat value="141" label="Total users" />
+          <div className="grid grid-cols-2 gap-x-6 gap-y-6 py-4 sm:grid-cols-5">
+            <Stat value="500+" label="Students today" />
+            <Stat value="141" label="Users at measurement" />
             <Stat value="3" label="Paying users" />
             <Stat value="18%" label="Reach a first practice session" approx />
             <Stat value="0%" label="Conversion, first-session cohort" />
           </div>
 
           <p>
-            <strong>Acquisition.</strong> All 141 users so far have come
-            through word of mouth — it&rsquo;s currently our only real
-            channel, and acquisition cost through it is effectively ₦0.
+            <strong>Acquisition.</strong> All of the first 141 users came
+            through word of mouth, which was our only real channel at the
+            time, with acquisition cost effectively ₦0.
           </p>
           <p>
             <strong>Activation.</strong> Only an estimated ~18% of signups
@@ -213,7 +224,7 @@ export default function SabiCaseStudy() {
             signal at best.
           </p>
           <p>
-            <strong>Monetization.</strong> 3 users are paying today. Among
+            <strong>Monetization.</strong> 3 users were paying at the time. Among
             users tracked in the current measurement who completed a first
             practice session, observed conversion to paid is 0%.
           </p>
