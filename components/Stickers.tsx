@@ -10,9 +10,9 @@ type Sticker = {
 
 const stickers: Sticker[] = [
   { text: "📍 Ibadan, NG", className: "-left-8 top-6 bg-paper", rotate: -8 },
-  { text: "Taking new projects", className: "-right-6 top-[38%] bg-accent text-paper", rotate: 6 },
-  { text: "500+ students on Sabi", className: "-left-10 bottom-14 bg-accent-soft", rotate: -4 },
-  { text: "🏀 🎧 🚗", className: "-right-3 -bottom-3 bg-paper", rotate: 9 },
+  { text: "Taking new projects", className: "-right-6 top-[17%] bg-accent text-paper", rotate: 6 },
+  { text: "500+ students on Sabi", className: "-left-12 bottom-9 bg-accent-soft", rotate: -4 },
+  { text: "🏀 🎧 🚗", className: "-right-5 bottom-0.5 bg-paper", rotate: 9 },
 ];
 
 // Stickers stuck around the portrait. Visitors can drag them about.
