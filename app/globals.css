@@ -8,6 +8,8 @@
   --line: #e1ded5;
   --accent: #1c5a40;
   --accent-soft: #dceae2;
+  --pop: #ffd23f;
+  --pop-soft: #fff1bd;
 }
 
 @theme inline {
@@ -18,6 +20,9 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-pop: var(--pop);
+  --color-pop-soft: var(--pop-soft);
+  --font-hand: var(--font-caveat);
   --font-display: var(--font-geist);
   --font-sans: var(--font-geist);
   --font-mono: var(--font-geist-mono);
@@ -34,7 +39,7 @@ html {
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-sans);
+  font-family: var(--font-geist), system-ui, sans-serif;
   overflow-x: hidden;
   font-feature-settings: "ss01";
 }
@@ -47,7 +52,7 @@ h1, h2, h3 {
 
 /* Small uppercase mono labels */
 .label {
-  font-family: var(--font-mono);
+  font-family: var(--font-geist-mono), monospace;
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -138,7 +143,106 @@ h1, h2, h3 {
   box-shadow: 0 0 0 3px rgba(47,158,91,.18);
 }
 
+/* ---------- Personality layer ---------- */
+
+/* Yellow highlighter swipe behind a word */
+.highlight {
+  position: relative;
+  white-space: nowrap;
+  z-index: 0;
+}
+.highlight::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -0.12em;
+  right: -0.12em;
+  bottom: 0.08em;
+  height: 0.42em;
+  background: var(--pop);
+  border-radius: 0.15em 0.4em 0.2em 0.35em;
+  transform: rotate(-1.5deg) scaleX(0);
+  transform-origin: left;
+  animation: swipe 700ms 550ms cubic-bezier(.2,.75,.2,1) forwards;
+}
+@keyframes swipe { to { transform: rotate(-1.5deg) scaleX(1); } }
+
+/* Handwritten margin notes */
+.note {
+  font-family: var(--font-caveat), cursive;
+  font-weight: 500;
+  line-height: 1.05;
+  color: var(--accent);
+}
+
+/* Waving hand */
+.wave {
+  display: inline-block;
+  transform-origin: 70% 75%;
+  animation: wave 2.4s 900ms ease-in-out 2;
+}
+@keyframes wave {
+  0%, 60%, 100% { transform: rotate(0); }
+  10%, 30% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+}
+
+/* Draggable stickers on the portrait */
+.sticker {
+  position: absolute;
+  z-index: 2;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  white-space: nowrap;
+  border-radius: 999px;
+  border: 1.5px solid var(--ink);
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: box-shadow 150ms ease, scale 150ms ease;
+}
+.sticker:hover { scale: 1.05; }
+.sticker.is-dragging {
+  cursor: grabbing;
+  scale: 1.08;
+  box-shadow: 6px 8px 0 var(--ink);
+}
+
+/* Polaroid tilt for demo cards */
+.tilt { transition: rotate 400ms cubic-bezier(.2,.75,.2,1), border-color 300ms ease, box-shadow 300ms ease; }
+.tilt-l { rotate: -1.4deg; }
+.tilt-r { rotate: 1.2deg; }
+.tilt-0 { rotate: 0.4deg; }
+.tilt:hover { rotate: 0deg; }
+
+/* Sticky-note principles */
+.sticky-note {
+  position: relative;
+  background: var(--pop-soft);
+  padding: 1.4rem 1.4rem 1.6rem;
+  box-shadow: 0 10px 22px -14px rgba(18,20,18,.35);
+  transition: rotate 350ms cubic-bezier(.2,.75,.2,1), translate 350ms ease;
+}
+.sticky-note::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 70px;
+  height: 20px;
+  translate: -50% 0;
+  background: rgba(255,255,255,.55);
+  border: 1px solid rgba(18,20,18,.06);
+  rotate: -2deg;
+}
+.sticky-note:hover { rotate: 0deg !important; translate: 0 -4px; }
+
 @media (prefers-reduced-motion: reduce) {
+  .highlight::before { transform: rotate(-1.5deg) scaleX(1); }
   html {
     scroll-behavior: auto;
   }

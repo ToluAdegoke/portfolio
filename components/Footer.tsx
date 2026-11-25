@@ -11,12 +11,19 @@ export default function Footer() {
     <footer id="contact" className="bg-ink text-paper">
       <div className="mx-auto max-w-6xl px-6 pb-10 pt-20 sm:px-8 sm:pt-24">
         <p className="label !text-paper/50">Contact</p>
-        <h2 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.05] sm:text-6xl">
-          Have a role, a project or an idea? Let&rsquo;s talk.
+        <h2 className="mt-4 max-w-3xl text-5xl font-semibold leading-[1.02] sm:text-7xl">
+          Make we build{" "}
+          <span className="text-pop">something.</span>
         </h2>
+        <p className="note mt-3 rotate-[-2deg] text-2xl !text-paper/70">
+          (that&rsquo;s Pidgin for &ldquo;let&rsquo;s build something&rdquo;)
+        </p>
+        <p className="mt-8 max-w-lg text-lg text-paper/70">
+          Got a role, a project or a half-baked idea? Send it over.
+        </p>
         <a
           href={`mailto:${site.email}`}
-          className="footer-link focus-ring mt-8 inline-block rounded-sm text-lg text-paper/90 sm:text-2xl"
+          className="footer-link focus-ring mt-6 inline-block rounded-sm text-lg text-paper/90 sm:text-2xl"
         >
           {site.email} <span aria-hidden="true">→</span>
         </a>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import LocalTime from "@/components/LocalTime";
+import Stickers from "@/components/Stickers";
 import { demos, principles, site } from "@/lib/data";
 
 const facts = [
@@ -25,6 +26,27 @@ function Tags({ items }: { items: string[] }) {
   );
 }
 
+function Squiggle({ className = "" }: { className?: string }) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 120 12" preserveAspectRatio="none" className={`h-3 ${className}`} fill="none">
+      <path
+        d="M2 8 C 12 2, 22 2, 32 7 S 52 12, 62 6 S 82 1, 92 6 S 110 11, 118 5"
+        stroke="currentColor"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+const offTheClock = [
+  { emoji: "🎧", title: "Music", body: "Something is always playing while I build." },
+  { emoji: "🏀", title: "Basketball", body: "Watching it, and arguing about it after." },
+  { emoji: "🚗", title: "Cars", body: "Will absolutely slow down to look at a nice one." },
+];
+
+const noteTilt = ["-rotate-2", "rotate-1", "rotate-2", "-rotate-1"];
+
 export default function Home() {
   return (
     <>
@@ -37,8 +59,13 @@ export default function Home() {
               Open to internships &amp; freelance work
             </p>
             <h1 className="hero-title mt-6 text-5xl font-semibold leading-[0.98] sm:text-6xl md:text-7xl">
-              Tolulope Adegoke
+              Hi, I&rsquo;m <span className="highlight">Tolu</span>{" "}
+              <span aria-hidden="true" className="wave">👋</span>
+              <span className="sr-only">, short for Tolulope Adegoke.</span>
             </h1>
+            <p aria-hidden="true" className="hero-kicker note mt-3 -rotate-2 text-2xl sm:text-[1.7rem]">
+              (Tolulope Adegoke, if we&rsquo;re being formal)
+            </p>
             <p className="hero-copy mt-6 max-w-2xl text-xl leading-snug text-ink-soft sm:text-2xl">
               I build web and mobile products from the first idea to software
               people actually use. Right now that&rsquo;s{" "}
@@ -66,20 +93,25 @@ export default function Home() {
             </div>
           </div>
 
-          <figure className="hero-portrait-wrap mx-auto w-full max-w-[260px] md:mx-0">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-paper-dim">
-              <Image
-                src="/images/tolulope-profile.jpeg"
-                alt="Tolulope Adegoke"
-                fill
-                priority
-                className="object-cover object-[52%_center]"
-                sizes="(min-width: 768px) 260px, 70vw"
-              />
+          <figure className="hero-portrait-wrap mx-auto w-full max-w-[250px] md:mx-0">
+            <div className="relative">
+              <div className="relative aspect-[4/5] rotate-2 overflow-hidden rounded-2xl border-[1.5px] border-ink bg-paper-dim shadow-[6px_6px_0_var(--ink)]">
+                <Image
+                  src="/images/tolulope-profile.jpeg"
+                  alt="Tolulope Adegoke"
+                  fill
+                  priority
+                  className="object-cover object-[52%_center]"
+                  sizes="(min-width: 768px) 250px, 70vw"
+                />
+              </div>
+              <Stickers />
             </div>
-            <figcaption className="label mt-3 flex justify-between">
-              <span>Ibadan, Nigeria</span>
-              <LocalTime />
+            <figcaption className="note mt-7 text-center text-xl">
+              psst, the stickers move ↑
+              <span className="mt-1 block text-base text-ink-soft">
+                it&rsquo;s <LocalTime /> in Ibadan right now
+              </span>
             </figcaption>
           </figure>
         </div>
@@ -104,9 +136,15 @@ export default function Home() {
           <Reveal>
             <div className="flex items-end justify-between gap-6">
               <h2 id="work-heading" className="text-3xl font-semibold sm:text-4xl">
-                Selected work
+                Selected{" "}
+                <span className="relative inline-block">
+                  work
+                  <Squiggle className="absolute -bottom-3 left-0 w-full text-pop" />
+                </span>
               </h2>
-              <p className="label hidden sm:block">2026 · Web &amp; mobile</p>
+              <p aria-hidden="true" className="note hidden rotate-[-3deg] text-2xl sm:block">
+                start with this one ↓
+              </p>
             </div>
           </Reveal>
 
@@ -237,6 +275,9 @@ export default function Home() {
               <h2 id="websites-heading" className="mt-3 text-3xl font-semibold sm:text-4xl">
                 Websites for small businesses
               </h2>
+              <p aria-hidden="true" className="note mt-2 rotate-[-2deg] text-xl">
+                go on, open one on your phone
+              </p>
             </div>
             <p className="max-w-md leading-relaxed text-ink-soft md:justify-self-end">
               Fast, mobile-first sites for cafes, shops and creatives. Each of
@@ -254,9 +295,9 @@ export default function Home() {
                   href={demo.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="project-card focus-ring group block overflow-hidden rounded-2xl border border-line bg-paper"
+                  className={`project-card tilt ${["tilt-l", "tilt-0", "tilt-r"][i % 3]} focus-ring group block overflow-hidden rounded-2xl border border-line bg-paper p-3 pb-0`}
                 >
-                  <div className="overflow-hidden bg-paper-dim">
+                  <div className="overflow-hidden rounded-lg bg-paper-dim">
                     <Image
                       src={demo.image}
                       alt={demo.alt}
@@ -266,7 +307,7 @@ export default function Home() {
                       sizes="(min-width: 768px) 360px, 100vw"
                     />
                   </div>
-                  <div className="p-6">
+                  <div className="px-3 pb-6 pt-5">
                     <p className="label">{demo.kind}</p>
                     <h3 className="mt-2 text-xl font-semibold">{demo.name}</h3>
                     <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{demo.blurb}</p>
@@ -315,12 +356,12 @@ export default function Home() {
               More about me <span aria-hidden="true">→</span>
             </Link>
           </Reveal>
-          <ol className="grid gap-x-10 gap-y-10 sm:grid-cols-2">
+          <ol className="grid gap-x-8 gap-y-10 pt-3 sm:grid-cols-2">
             {principles.map((p, i) => (
               <li key={p.title}>
                 <Reveal delay={i * 60}>
-                  <div className="border-t-2 border-ink pt-4">
-                    <span className="font-mono text-xs text-ink-soft">0{i + 1}</span>
+                  <div className={`sticky-note ${noteTilt[i % noteTilt.length]}`}>
+                    <span className="note text-2xl">#{i + 1}</span>
                     <h3 className="mt-2 text-lg font-semibold">{p.title}</h3>
                     <p className="mt-2 text-[0.95rem] leading-relaxed text-ink-soft">{p.body}</p>
                   </div>
@@ -328,6 +369,35 @@ export default function Home() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* Off the clock */}
+      <section aria-labelledby="offclock-heading" className="border-t border-line bg-paper-dim/40">
+        <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24">
+          <Reveal>
+            <p className="label">Off the clock</p>
+            <h2 id="offclock-heading" className="mt-3 text-3xl font-semibold sm:text-4xl">
+              When I&rsquo;m not shipping
+            </h2>
+          </Reveal>
+          <ul className="mt-10 grid gap-5 sm:grid-cols-3">
+            {offTheClock.map((x, i) => (
+              <li key={x.title}>
+                <Reveal delay={i * 60}>
+                  <div className="group flex items-start gap-4 rounded-2xl border-[1.5px] border-ink bg-paper p-6 shadow-[4px_4px_0_var(--ink)] transition-transform hover:-translate-y-1">
+                    <span aria-hidden="true" className="text-4xl transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110">
+                      {x.emoji}
+                    </span>
+                    <div>
+                      <h3 className="text-lg font-semibold">{x.title}</h3>
+                      <p className="mt-1 text-[0.95rem] leading-relaxed text-ink-soft">{x.body}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </>
