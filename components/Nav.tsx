@@ -17,7 +17,7 @@ export default function Nav() {
         <nav aria-label="Primary">
           <ul className="flex items-center gap-5 text-sm text-ink-soft sm:gap-7">
             {nav.map((item) => (
-              <li key={item.href}>
+              <li key={item.href} className="hidden md:list-item">
                 <Link
                   href={item.href}
                   className="nav-link focus-ring rounded-sm transition-colors hover:text-ink"
@@ -31,7 +31,8 @@ export default function Nav() {
                 href="#contact"
                 className="focus-ring rounded-full bg-ink px-4 py-2 text-paper transition-colors hover:bg-accent"
               >
-                Contact
+                <span className="sm:hidden">Contact</span>
+                <span className="hidden sm:inline">Start a project</span>
               </a>
             </li>
           </ul>

@@ -1,7 +1,6 @@
 import { site } from "@/lib/data";
 
 const links = [
-  { href: site.cv, label: "CV" },
   { href: site.github, label: "GitHub" },
   { href: site.linkedin, label: "LinkedIn" },
   { href: site.twitter, label: "Twitter / X" },
@@ -20,10 +19,11 @@ export default function Footer() {
           (that&rsquo;s Pidgin for &ldquo;let&rsquo;s build something&rdquo;)
         </p>
         <p className="mt-8 max-w-lg text-lg text-paper/70">
-          Got a role, a project or a half-baked idea? Send it over.
+          Tell me about your business and what you want your website to
+          do. We&rsquo;ll take it from there.
         </p>
         <a
-          href={`mailto:${site.email}`}
+          href={`mailto:${site.email}?subject=${encodeURIComponent("Website project")}`}
           className="footer-link focus-ring mt-6 inline-block rounded-sm text-lg text-paper/90 sm:text-2xl"
         >
           {site.email} <span aria-hidden="true">→</span>

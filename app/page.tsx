@@ -3,28 +3,15 @@ import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import LocalTime from "@/components/LocalTime";
 import Stickers from "@/components/Stickers";
-import { demos, principles, site } from "@/lib/data";
+import { demos, included, services, site, steps } from "@/lib/data";
+
+const projectMail = `mailto:${site.email}?subject=${encodeURIComponent("Website project")}`;
 
 const facts = [
-  { label: "Now", value: "Chief Product Officer & Co-founder, Sabi" },
-  { label: "Studying", value: "Computer Science, Bowen University '27" },
-  { label: "Community", value: "CS Commissioner, NACOS Bowen" },
+  { label: "I build", value: "Business websites, online stores & portfolios" },
+  { label: "Based in", value: "Ibadan, working with clients anywhere" },
+  { label: "Also built", value: "Sabi, an app used by 500+ students" },
 ];
-
-function Tags({ items }: { items: string[] }) {
-  return (
-    <ul className="flex flex-wrap gap-1.5">
-      {items.map((t) => (
-        <li
-          key={t}
-          className="rounded-full border border-line px-2.5 py-1 font-mono text-[0.7rem] text-ink-soft"
-        >
-          {t}
-        </li>
-      ))}
-    </ul>
-  );
-}
 
 function Squiggle({ className = "" }: { className?: string }) {
   return (
@@ -57,34 +44,23 @@ export default function Home() {
             <h1 className="hero-title text-5xl font-semibold leading-[0.98] sm:text-6xl md:text-7xl">
               Hi, I&rsquo;m Tolu{" "}
               <span aria-hidden="true" className="wave">👋</span>
-              <span className="sr-only">, short for Tolulope Adegoke.</span>
+              <span className="sr-only">, short for Tolulope Adegoke. I build websites for businesses.</span>
             </h1>
             <p aria-hidden="true" className="hero-kicker note mt-3 -rotate-2 text-2xl sm:text-[1.7rem]">
               (Tolulope Adegoke Samuel, if we&rsquo;re being formal)
             </p>
             <p className="hero-copy mt-6 max-w-2xl text-xl leading-snug text-ink-soft sm:text-2xl">
-              I build web and mobile products from the first idea to software
-              people actually use. Right now that&rsquo;s{" "}
-              <Link href="/work/sabi" className="focus-ring rounded-sm text-ink underline decoration-line decoration-2 underline-offset-4 hover:decoration-accent">
-                Sabi
-              </Link>
-              , an AI exam-prep platform used by 500+ students.
+              I design and build websites for cafes, shops, photographers and
+              brands. Sites that look great on a phone, load fast, and make it
+              easy for customers to find you, order or get in touch.
             </p>
             <div className="hero-copy mt-9 flex flex-wrap items-center gap-3">
-              <a href={`mailto:${site.email}`} className="btn btn-primary focus-ring">
-                Email me
+              <a href={projectMail} className="btn btn-primary focus-ring">
+                Start a project
               </a>
-              <a href={site.cv} target="_blank" rel="noopener noreferrer" className="btn btn-secondary focus-ring">
-                View my CV
+              <a href="#websites" className="btn btn-secondary focus-ring">
+                See my websites
               </a>
-              <span className="ml-1 flex gap-4 text-sm text-ink-soft">
-                <a href={site.github} target="_blank" rel="noopener noreferrer" className="nav-link focus-ring rounded-sm hover:text-ink">
-                  GitHub
-                </a>
-                <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="nav-link focus-ring rounded-sm hover:text-ink">
-                  LinkedIn
-                </a>
-              </span>
             </div>
           </div>
 
@@ -121,230 +97,146 @@ export default function Home() {
         </dl>
       </section>
 
-      {/* Work */}
-      <section
-        id="work"
-        aria-labelledby="work-heading"
-        className="scroll-mt-6 border-t border-line bg-paper-dim/40"
-      >
-        <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24">
-          <Reveal>
-            <div className="flex items-end justify-between gap-6">
-              <h2 id="work-heading" className="text-3xl font-semibold sm:text-4xl">
-                Selected{" "}
-                <span className="relative inline-block">
-                  work
-                  <Squiggle className="absolute -bottom-3 left-0 w-full text-pop" />
-                </span>
-              </h2>
-              <p aria-hidden="true" className="note hidden rotate-[-3deg] text-2xl sm:block">
-                start with this one ↓
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Sabi: featured */}
-          <Reveal className="mt-10">
-            <article className="project-card group relative grid overflow-hidden rounded-2xl border border-line bg-paper lg:grid-cols-[0.85fr_1.15fr]">
-              <div className="flex flex-col p-7 sm:p-9">
-                <p className="label">01 · Chief Product Officer &amp; Co-founder · 2026</p>
-                <h3 className="mt-4 text-4xl font-semibold">Sabi</h3>
-                <p className="mt-3 max-w-md leading-relaxed text-ink-soft">
-                  AI-powered JAMB and WAEC exam prep for Nigerian students. An
-                  AI tutor explains every wrong answer, and a dashboard shows
-                  which topics are holding a score back.
-                </p>
-                <dl className="mt-7 grid grid-cols-2 gap-4 border-t border-line pt-5">
-                  <div>
-                    <dt className="text-3xl font-semibold tracking-tight">500+</dt>
-                    <dd className="mt-1 text-sm text-ink-soft">students signed up</dd>
-                  </div>
-                  <div>
-                    <dt className="text-3xl font-semibold tracking-tight">2 exams</dt>
-                    <dd className="mt-1 text-sm text-ink-soft">JAMB &amp; WAEC covered</dd>
-                  </div>
-                </dl>
-                <div className="mt-7">
-                  <Tags items={["Next.js", "Supabase", "AI", "Paystack"]} />
-                </div>
-                <div className="mt-auto flex flex-wrap items-center gap-3 pt-8">
-                  {/* The case-study link stretches over the whole card */}
-                  <Link
-                    href="/work/sabi"
-                    className="project-link btn btn-primary focus-ring after:absolute after:inset-0 after:content-['']"
-                  >
-                    Read the case study <span aria-hidden="true">→</span>
-                  </Link>
-                  <a
-                    href={site.sabi}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-secondary focus-ring relative z-10 bg-paper"
-                  >
-                    Try Sabi live <span aria-hidden="true">↗</span>
-                  </a>
-                </div>
-              </div>
-              <div className="relative min-h-[260px] overflow-hidden bg-accent-soft/60 p-6 sm:p-10 lg:pr-0">
-                <div className="shot-frame overflow-hidden rounded-lg border border-line bg-paper shadow-[0_24px_60px_-30px_rgba(18,20,18,.35)] lg:rounded-r-none">
-                  <Image
-                    src="/images/sabi-landing.png"
-                    alt="Sabi landing page, headline: You go sabi this exam."
-                    width={3072}
-                    height={1536}
-                    priority
-                    className="shot-image h-auto w-full"
-                    sizes="(min-width: 1024px) 640px, 100vw"
-                  />
-                </div>
-              </div>
-            </article>
-          </Reveal>
-
-          {/* Sonix */}
-          <Reveal className="mt-6">
-            <Link
-              href="/work/sonix"
-              className="project-card focus-ring group grid overflow-hidden rounded-2xl border border-line bg-paper lg:grid-cols-[0.85fr_1.15fr]"
-            >
-              <div className="flex flex-col p-7 sm:p-9">
-                <p className="label">02 · Personal project · 2026</p>
-                <h3 className="mt-4 text-4xl font-semibold">Sonix</h3>
-                <p className="mt-3 max-w-md leading-relaxed text-ink-soft">
-                  A cross-platform Flutter music player, built to learn mobile
-                  development end to end. Search, charts and 30-second previews
-                  through the Deezer API, plus a full-screen player, mini
-                  player and a saved library.
-                </p>
-                <div className="mt-7">
-                  <Tags items={["Flutter", "Dart", "Deezer API"]} />
-                </div>
-                <span className="project-link mt-auto pt-8 text-sm font-medium text-accent">
-                  Read the case study <span aria-hidden="true">→</span>
-                </span>
-              </div>
-              <div className="flex items-end justify-center gap-4 overflow-hidden bg-ink px-6 pt-10 sm:gap-6">
-                {[
-                  { src: "/images/sonix-search.jpeg", alt: "Sonix search screen", cls: "hidden translate-y-8 sm:block" },
-                  { src: "/images/sonix-home.jpeg", alt: "Sonix home screen showing featured playlists and trending tracks", cls: "" },
-                  { src: "/images/sonix-player.jpeg", alt: "Sonix full-screen player", cls: "hidden translate-y-8 sm:block" },
-                ].map((shot) => (
-                  <div
-                    key={shot.src}
-                    className={`w-[150px] shrink-0 overflow-hidden rounded-t-[1.4rem] border-x-[5px] border-t-[5px] border-[#2a2d35] sm:w-[170px] ${shot.cls}`}
-                  >
-                    <Image
-                      src={shot.src}
-                      alt={shot.alt}
-                      width={540}
-                      height={1170}
-                      className="shot-image -mb-[30%] h-auto w-full"
-                      sizes="170px"
-                    />
-                  </div>
-                ))}
-              </div>
-            </Link>
-          </Reveal>
-        </div>
-      </section>
-
       {/* Websites */}
       <section
         id="websites"
         aria-labelledby="websites-heading"
-        className="mx-auto max-w-6xl scroll-mt-6 px-6 py-20 sm:px-8 sm:py-24"
+        className="scroll-mt-20 border-t border-line bg-paper-dim/40"
       >
-        <Reveal>
-          <div className="grid gap-6 md:grid-cols-[1fr_1fr] md:items-end">
-            <div>
-              <p className="label">Freelance</p>
-              <h2 id="websites-heading" className="mt-3 text-3xl font-semibold sm:text-4xl">
-                Websites for small businesses
-              </h2>
-              <p aria-hidden="true" className="note mt-2 rotate-[-2deg] text-xl">
-                go on, open one on your phone
+        <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24">
+          <Reveal>
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <p className="label">Recent websites</p>
+                <h2 id="websites-heading" className="mt-3 text-3xl font-semibold sm:text-4xl">
+                  Sites I&rsquo;ve{" "}
+                  <span className="relative inline-block">
+                    built
+                    <Squiggle className="absolute -bottom-3 left-0 w-full text-pop" />
+                  </span>
+                </h2>
+              </div>
+              <p aria-hidden="true" className="note rotate-[-3deg] text-2xl">
+                go on, open one on your phone ↓
               </p>
             </div>
-            <p className="max-w-md leading-relaxed text-ink-soft md:justify-self-end">
-              Fast, mobile-first sites for cafes, shops and creatives. Each of
-              these demos has its own look and real features, not just a
-              pretty homepage.
-            </p>
-          </div>
+          </Reveal>
+
+          <ul className="mt-12 space-y-8">
+            {demos.map((demo, i) => (
+              <li key={demo.name}>
+                <Reveal>
+                  <a
+                    href={demo.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card focus-ring group grid overflow-hidden rounded-2xl border border-line bg-paper lg:grid-cols-[0.8fr_1.2fr]"
+                  >
+                    <div className={`flex flex-col p-7 sm:p-9 ${i % 2 ? "lg:order-2" : ""}`}>
+                      <p className="label">
+                        0{i + 1} · {demo.kind}
+                      </p>
+                      <h3 className="mt-4 text-3xl font-semibold">{demo.name}</h3>
+                      <p className="mt-3 max-w-sm leading-relaxed text-ink-soft">{demo.blurb}</p>
+                      <span className="project-link mt-auto pt-8 text-sm font-medium text-accent">
+                        Open the live site <span aria-hidden="true">↗</span>
+                      </span>
+                    </div>
+                    <div className="relative overflow-hidden bg-accent-soft/60 px-6 pt-8 sm:px-10 sm:pt-10">
+                      {/* Browser window */}
+                      <div className="shot-frame overflow-hidden rounded-t-lg border border-b-0 border-line bg-paper shadow-[0_24px_60px_-30px_rgba(11,13,18,.35)]">
+                        <div aria-hidden="true" className="flex gap-1.5 border-b border-line px-3 py-2.5">
+                          <span className="h-2.5 w-2.5 rounded-full bg-line" />
+                          <span className="h-2.5 w-2.5 rounded-full bg-line" />
+                          <span className="h-2.5 w-2.5 rounded-full bg-line" />
+                        </div>
+                        <Image
+                          src={demo.shot}
+                          alt={`${demo.name} website, desktop view`}
+                          width={1440}
+                          height={900}
+                          className="shot-image h-auto w-full"
+                          sizes="(min-width: 1024px) 620px, 100vw"
+                        />
+                      </div>
+                      {/* Phone */}
+                      <div className="absolute bottom-0 right-5 hidden w-[118px] overflow-hidden rounded-t-[1.3rem] border-x-[5px] border-t-[5px] border-ink bg-ink shadow-[0_20px_40px_-18px_rgba(11,13,18,.6)] sm:right-8 sm:block">
+                        <Image
+                          src={demo.shotMobile}
+                          alt={`${demo.name} website, phone view`}
+                          width={390}
+                          height={844}
+                          className="-mb-[35%] h-auto w-full"
+                          sizes="118px"
+                        />
+                      </div>
+                    </div>
+                  </a>
+                </Reveal>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section
+        id="services"
+        aria-labelledby="services-heading"
+        className="mx-auto max-w-6xl scroll-mt-20 px-6 py-20 sm:px-8 sm:py-24"
+      >
+        <Reveal>
+          <p className="label">Services</p>
+          <h2 id="services-heading" className="mt-3 max-w-2xl text-3xl font-semibold sm:text-4xl">
+            What I can build for your business
+          </h2>
         </Reveal>
 
-        <ul className="mt-12 grid gap-6 md:grid-cols-3">
-          {demos.map((demo, i) => (
-            <li key={demo.name}>
-              <Reveal delay={i * 60}>
-                <a
-                  href={demo.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`project-card tilt ${["tilt-l", "tilt-0", "tilt-r"][i % 3]} focus-ring group block overflow-hidden rounded-2xl border border-line bg-paper p-3 pb-0`}
-                >
-                  <div className="overflow-hidden rounded-lg bg-paper-dim">
-                    <Image
-                      src={demo.image}
-                      alt={demo.alt}
-                      width={demo.width}
-                      height={demo.height}
-                      className="shot-image aspect-[4/3] h-auto w-full object-cover"
-                      sizes="(min-width: 768px) 360px, 100vw"
-                    />
-                  </div>
-                  <div className="px-3 pb-6 pt-5">
-                    <p className="label">{demo.kind}</p>
-                    <h3 className="mt-2 text-xl font-semibold">{demo.name}</h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{demo.blurb}</p>
-                    <span className="project-link mt-4 inline-block text-sm font-medium text-accent">
-                      Open the live demo <span aria-hidden="true">↗</span>
-                    </span>
-                  </div>
-                </a>
+        <ul className="mt-12 grid gap-5 md:grid-cols-3">
+          {services.map((x, i) => (
+            <li key={x.title}>
+              <Reveal delay={i * 60} className="h-full">
+                <div className="flex h-full flex-col rounded-2xl border-[1.5px] border-ink bg-paper p-7 shadow-[4px_4px_0_var(--ink)]">
+                  <h3 className="text-2xl font-semibold">{x.title}</h3>
+                  <p className="label mt-2">{x.for}</p>
+                  <p className="mt-4 flex-1 leading-relaxed text-ink-soft">{x.body}</p>
+                  <p className="note mt-5 text-xl">{x.example}</p>
+                </div>
               </Reveal>
             </li>
           ))}
         </ul>
 
         <Reveal>
-          <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-line p-6 sm:flex-row sm:items-center sm:justify-between sm:p-7">
-            <p className="text-lg">
-              Need a website for your business?{" "}
-              <span className="text-ink-soft">Tell me what you sell and who it&rsquo;s for.</span>
-            </p>
-            <a
-              href={`mailto:${site.email}?subject=Website%20project`}
-              className="btn btn-primary focus-ring shrink-0 self-start sm:self-auto"
-            >
-              Start a project
-            </a>
+          <div className="mt-8 rounded-2xl bg-ink p-7 text-paper sm:p-9">
+            <h3 className="text-xl font-semibold">Every site comes with</h3>
+            <ul className="mt-5 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+              {included.map((x) => (
+                <li key={x} className="flex gap-3 text-[0.95rem] text-paper/85">
+                  <span aria-hidden="true" className="mt-0.5 text-pop">✓</span>
+                  {x}
+                </li>
+              ))}
+            </ul>
           </div>
         </Reveal>
       </section>
 
-      {/* How I work */}
-      <section aria-labelledby="principles-heading" className="border-t border-line">
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:px-8 sm:py-24 md:grid-cols-[0.8fr_1.2fr]">
+      {/* How it works */}
+      <section
+        id="process"
+        aria-labelledby="process-heading"
+        className="scroll-mt-20 border-t border-line"
+      >
+        <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24">
           <Reveal>
-            <p className="label">How I work</p>
-            <h2 id="principles-heading" className="mt-3 text-3xl font-semibold sm:text-4xl">
-              Lessons from building with real users
+            <p className="label">How it works</p>
+            <h2 id="process-heading" className="mt-3 text-3xl font-semibold sm:text-4xl">
+              From first chat to live site
             </h2>
-            <p className="mt-5 max-w-sm leading-relaxed text-ink-soft">
-              I&rsquo;m early in my career, but I&rsquo;ve shipped products
-              people use and pay for. These are the habits that came out of it.
-            </p>
-            <Link
-              href="/about"
-              className="project-link focus-ring mt-6 inline-block rounded-sm text-sm font-medium text-accent"
-            >
-              More about me <span aria-hidden="true">→</span>
-            </Link>
           </Reveal>
-          <ol className="grid gap-x-8 gap-y-10 pt-3 sm:grid-cols-2">
-            {principles.map((p, i) => (
+          <ol className="mt-12 grid gap-x-6 gap-y-10 pt-3 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((p, i) => (
               <li key={p.title}>
                 <Reveal delay={i * 60}>
                   <div className={`sticky-note ${noteTilt[i % noteTilt.length]}`}>
@@ -356,16 +248,118 @@ export default function Home() {
               </li>
             ))}
           </ol>
+
+          <Reveal>
+            <div className="mt-14 flex flex-col gap-4 rounded-2xl border border-line bg-paper p-6 sm:flex-row sm:items-center sm:justify-between sm:p-7">
+              <p className="text-lg">
+                Have a business that needs a website?{" "}
+                <span className="text-ink-soft">Tell me what you sell and who it&rsquo;s for.</span>
+              </p>
+              <a href={projectMail} className="btn btn-primary focus-ring shrink-0 self-start sm:self-auto">
+                Start a project
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Beyond websites */}
+      <section aria-labelledby="beyond-heading" className="border-t border-line bg-paper-dim/40">
+        <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24">
+          <Reveal>
+            <p className="label">Beyond websites</p>
+            <h2 id="beyond-heading" className="mt-3 max-w-2xl text-3xl font-semibold sm:text-4xl">
+              I also build full products
+            </h2>
+            <p className="mt-4 max-w-xl leading-relaxed text-ink-soft">
+              So if your site needs logins, payments or a dashboard later,
+              you won&rsquo;t need someone new.
+            </p>
+          </Reveal>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <Reveal className="h-full">
+              <article className="project-card group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-paper">
+                <div className="overflow-hidden bg-accent-soft/60 px-6 pt-6">
+                  <Image
+                    src="/images/sabi-landing.png"
+                    alt="Sabi landing page, headline: You go sabi this exam."
+                    width={3072}
+                    height={1536}
+                    className="shot-image h-auto w-full rounded-t-md border border-b-0 border-line"
+                    sizes="(min-width: 768px) 520px, 100vw"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-7">
+                  <p className="label">Co-founder · 500+ students</p>
+                  <h3 className="mt-3 text-2xl font-semibold">Sabi</h3>
+                  <p className="mt-2 leading-relaxed text-ink-soft">
+                    AI-powered JAMB and WAEC exam prep, with an AI tutor,
+                    mock exams and Paystack subscriptions.
+                  </p>
+                  <div className="mt-auto flex flex-wrap gap-4 pt-6 text-sm font-medium">
+                    <Link
+                      href="/work/sabi"
+                      className="project-link focus-ring rounded-sm text-accent after:absolute after:inset-0 after:content-['']"
+                    >
+                      Read the case study <span aria-hidden="true">→</span>
+                    </Link>
+                    <a
+                      href={site.sabi}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="focus-ring relative z-10 rounded-sm text-ink-soft underline underline-offset-4 hover:text-ink"
+                    >
+                      Try it live ↗
+                    </a>
+                  </div>
+                </div>
+              </article>
+            </Reveal>
+
+            <Reveal delay={60} className="h-full">
+              <Link
+                href="/work/sonix"
+                className="project-card focus-ring group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-paper"
+              >
+                <div className="flex justify-center gap-4 overflow-hidden bg-ink px-6 pt-6">
+                  {["/images/sonix-home.jpeg", "/images/sonix-player.jpeg"].map((src) => (
+                    <div key={src} className="w-[130px] overflow-hidden rounded-t-[1.2rem] border-x-[4px] border-t-[4px] border-[#2a2d35]">
+                      <Image
+                        src={src}
+                        alt=""
+                        width={540}
+                        height={1170}
+                        className="shot-image -mb-[45%] h-auto w-full"
+                        sizes="130px"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="flex flex-1 flex-col p-7">
+                  <p className="label">Mobile app · Flutter</p>
+                  <h3 className="mt-3 text-2xl font-semibold">Sonix</h3>
+                  <p className="mt-2 leading-relaxed text-ink-soft">
+                    A cross-platform music player with search, charts and
+                    previews through the Deezer API.
+                  </p>
+                  <span className="project-link mt-auto pt-6 text-sm font-medium text-accent">
+                    Read the case study <span aria-hidden="true">→</span>
+                  </span>
+                </div>
+              </Link>
+            </Reveal>
+          </div>
         </div>
       </section>
 
       {/* Off the clock */}
-      <section aria-labelledby="offclock-heading" className="border-t border-line bg-paper-dim/40">
+      <section aria-labelledby="offclock-heading" className="border-t border-line">
         <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24">
           <Reveal>
             <p className="label">Off the clock</p>
             <h2 id="offclock-heading" className="mt-3 text-3xl font-semibold sm:text-4xl">
-              When I&rsquo;m not shipping
+              When I&rsquo;m not building
             </h2>
           </Reveal>
           <ul className="mt-10 grid gap-5 sm:grid-cols-3">

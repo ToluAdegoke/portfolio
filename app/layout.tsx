@@ -25,9 +25,9 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://tolulope-adegoke.vercel.app"),
-  title: "Tolulope Adegoke | Product engineer",
+  title: "Tolulope Adegoke | Websites for small businesses",
   description:
-    "Tolulope Adegoke builds web and mobile products in Ibadan, Nigeria. Co-founder of Sabi and Genpay, Computer Science at Bowen University.",
+    "Tolulope Adegoke designs and builds fast, mobile-friendly websites for cafes, shops, photographers and brands. Based in Ibadan, Nigeria.",
 };
 
 export default function RootLayout({
