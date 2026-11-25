@@ -71,13 +71,15 @@ h2{font-size:clamp(32px,5vw,60px);font-weight:900;letter-spacing:-.02em}
 .card{background:var(--white);border:3px solid var(--ink);border-radius:26px;overflow:hidden;box-shadow:6px 6px 0 var(--ink);display:flex;flex-direction:column;transition:transform .2s}
 .card:hover{transform:translateY(-6px) rotate(-.6deg)}
 .card .art{aspect-ratio:1;border-bottom:3px solid var(--ink);position:relative;overflow:hidden;container-type:inline-size}
-.card .art svg.bottle{width:86%;height:86%;position:absolute;left:7%;top:9%;overflow:visible}
-.card .bt{transform-origin:50% 100%;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
-.card:hover .bt{transform:rotate(-4deg) translateY(-4px)}
-.line .sw svg{width:100%;height:100%;display:block;transform:scale(1.25);transform-origin:50% 60%}
 .card .art img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
 .card:hover .art img{transform:scale(1.05)}
-.card .heat{z-index:2;position:absolute;left:12px;top:12px;background:var(--white);border:3px solid var(--ink);border-radius:999px;padding:3px 10px;font-weight:800;font-size:13px}
+.plabel{position:absolute;left:33.9%;top:45.8%;width:32.4%;height:28%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1.1cqw;background:#14110F;color:#FFFDF5;pointer-events:none;transition:transform .5s;overflow:hidden}
+.card:hover .plabel{transform:scale(1.05)}
+.plabel b{font-family:"Permanent Marker",var(--display);font-weight:400;font-size:5.4cqw;letter-spacing:.01em;line-height:1;transform:rotate(-3deg)}
+.plabel i{display:block;width:60%;height:.9cqw;border-radius:1cqw}
+.plabel span{font-weight:800;font-size:2.8cqw;line-height:1.1;padding:0 1cqw}
+.plabel small{font-weight:800;font-size:2.1cqw;letter-spacing:.14em;text-transform:uppercase}
+.heat{z-index:2;position:absolute;left:12px;top:12px;background:var(--white);border:3px solid var(--ink);border-radius:999px;padding:3px 10px;font-weight:800;font-size:13px}
 .card .body{padding:18px;display:flex;flex-direction:column;gap:6px;flex:1}
 .card h3{font-size:19px;font-weight:700}
 .card p{font-size:15px;font-weight:600;opacity:.8;flex:1}
@@ -125,6 +127,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .lines{flex:1;overflow:auto;padding:12px 20px}
 .line{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:2px dashed var(--ink)}
 .line .sw{width:56px;height:56px;border-radius:14px;border:3px solid var(--ink);overflow:hidden;background:var(--sun)}
+.line .sw img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.9);transform-origin:50% 54%}
 .line b{display:block;font-size:15px}
 .qty{display:flex;align-items:center;gap:8px;margin-top:4px}
 .qty button{color:var(--ink);font:inherit;font-weight:800;line-height:1;width:26px;height:26px;border-radius:8px;border:2px solid var(--ink);background:var(--sun);font-weight:800;cursor:pointer}
@@ -264,32 +267,11 @@ const P=[
 ];
 const HC={mild:"#5BD66F",hot:"#FF9A1F",extra:"#FF3B2F"};
 const HL={mild:"Mild 🌶",hot:"Hot 🌶🌶",extra:"Extra hot 🌶🌶🌶"};
-
-const HN={mild:"MILD",hot:"HOT",extra:"EXTRA HOT"};
-function bottle(x){
-  const words=x.n.split(" ");const mid=Math.ceil(words.length/2);
-  const l1=words.slice(0,mid).join(" "),l2=words.slice(mid).join(" ");
-  return `<svg viewBox="0 0 200 200" role="img" aria-label="${x.n} sauce bottle" class="bottle">
-  <ellipse cx="100" cy="180" rx="46" ry="6" fill="#14110F" opacity=".22"/>
-  <g class="bt">
-    <rect x="83" y="28" width="34" height="27" rx="5" fill="#14110F"/>
-    <path d="M90 31v21M96 31v21M102 31v21M108 31v21" stroke="#fff" stroke-opacity=".18" stroke-width="2"/>
-    <path d="M70 92Q70 74 86 68L86 54H114V68Q130 74 130 92L134 160Q134 176 118 176H82Q66 176 66 160Z" fill="${x.c}" stroke="#14110F" stroke-width="3" stroke-linejoin="round"/>
-    <path d="M112 56L114 68Q130 74 130 92L134 160Q134 176 118 176H110Q122 172 122 158L120 96Q119 76 108 70Z" fill="#14110F" opacity=".22"/>
-    <path d="M76 98L74 156" stroke="#fff" stroke-opacity=".4" stroke-width="4" stroke-linecap="round"/>
-    <rect x="68" y="100" width="64" height="54" rx="3" fill="#14110F"/>
-    <text x="100" y="117" text-anchor="middle" font-family="Permanent Marker, Impact, sans-serif" font-size="13" fill="#FFFDF5" transform="rotate(-3 100 117)">El Fuego</text>
-    <rect x="84" y="122" width="32" height="3" rx="1.5" fill="${HC[x.h]}"/>
-    <text x="100" y="134" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="7" fill="#FFFDF5">${l1}</text>
-    ${l2?`<text x="100" y="142" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="7" fill="#FFFDF5">${l2}</text>`:''}
-    <text x="100" y="150" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="5" letter-spacing=".9" fill="${HC[x.h]}">${HN[x.h]}</text>
-  </g></svg>`;
-}
 const naira=n=>"₦"+n.toLocaleString("en-NG");
 
 const grid=document.getElementById('grid');
 function render(f){
-  grid.innerHTML=P.filter(x=>f==='all'||x.h===f).map(x=>`<article class="card"><div class="art" style="background:${x.bg}"><span class="heat">${HL[x.h]}</span>${bottle(x)}</div><div class="body"><h3>${x.n}</h3><p>${x.d}</p><div class="row"><span class="price">${naira(x.p)}</span><button class="add" data-id="${x.id}">Add +</button></div></div></article>`).join('');
+  grid.innerHTML=P.filter(x=>f==='all'||x.h===f).map(x=>`<article class="card"><div class="art" style="background:${x.bg}"><span class="heat">${HL[x.h]}</span><img src="img/${x.f}.jpg" alt="${x.n} sauce bottle" width="900" height="900" loading="lazy"><div class="plabel"><b>El Fuego</b><i style="background:${HC[x.h]}"></i><span>${x.n}</span><small style="color:${HC[x.h]}">${{mild:"Mild",hot:"Hot",extra:"Extra hot"}[x.h]}</small></div></div><div class="body"><h3>${x.n}</h3><p>${x.d}</p><div class="row"><span class="price">${naira(x.p)}</span><button class="add" data-id="${x.id}">Add +</button></div></div></article>`).join('');
 }
 render('all');
 document.getElementById('filters').addEventListener('click',e=>{
@@ -311,7 +293,7 @@ function draw(){
   const n=ids.reduce((s,i)=>s+cart[i],0);
   $('count').textContent=n;
   let t=0;
-  $('lines').innerHTML=ids.length?ids.map(i=>{const x=P.find(p=>p.id==i);t+=x.p*cart[i];return `<div class="line"><div class="sw">${bottle(x)}</div><div><b>${x.n}</b><div class="qty"><button data-d="-1" data-id="${i}" aria-label="Less">−</button><span>${cart[i]}</span><button data-d="1" data-id="${i}" aria-label="More">+</button></div></div><b>${naira(x.p*cart[i])}</b></div>`}).join(''):`<div class="empty">Your cart is empty.<br>Go pick some fire.</div>`;
+  $('lines').innerHTML=ids.length?ids.map(i=>{const x=P.find(p=>p.id==i);t+=x.p*cart[i];return `<div class="line"><div class="sw"><img src="img/${x.f}.jpg" alt=""></div><div><b>${x.n}</b><div class="qty"><button data-d="-1" data-id="${i}" aria-label="Less">−</button><span>${cart[i]}</span><button data-d="1" data-id="${i}" aria-label="More">+</button></div></div><b>${naira(x.p*cart[i])}</b></div>`}).join(''):`<div class="empty">Your cart is empty.<br>Go pick some fire.</div>`;
   $('total').textContent=naira(t);
 }
 function open(v){$('drawer').classList.toggle('on',v);$('scrim').classList.toggle('on',v)}
