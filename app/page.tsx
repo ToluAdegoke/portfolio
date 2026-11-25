@@ -6,7 +6,7 @@ import Stickers from "@/components/Stickers";
 import { demos, principles, site } from "@/lib/data";
 
 const facts = [
-  { label: "Now", value: "Co-founder, Sabi & Genpay" },
+  { label: "Now", value: "Chief Product Officer & Co-founder, Sabi" },
   { label: "Studying", value: "Computer Science, Bowen University '27" },
   { label: "Community", value: "CS Commissioner, NACOS Bowen" },
 ];
@@ -68,15 +68,14 @@ export default function Home() {
               <Link href="/work/sabi" className="focus-ring rounded-sm text-ink underline decoration-line decoration-2 underline-offset-4 hover:decoration-accent">
                 Sabi
               </Link>
-              , an AI exam-prep platform with 500+ students, and Genpay, a
-              ticketing platform for events.
+              , an AI exam-prep platform used by 500+ students.
             </p>
             <div className="hero-copy mt-9 flex flex-wrap items-center gap-3">
               <a href={`mailto:${site.email}`} className="btn btn-primary focus-ring">
                 Email me
               </a>
-              <a href="#work" className="btn btn-secondary focus-ring">
-                See my work
+              <a href={site.cv} target="_blank" rel="noopener noreferrer" className="btn btn-secondary focus-ring">
+                View my CV
               </a>
               <span className="ml-1 flex gap-4 text-sm text-ink-soft">
                 <a href={site.github} target="_blank" rel="noopener noreferrer" className="nav-link focus-ring rounded-sm hover:text-ink">
@@ -146,12 +145,9 @@ export default function Home() {
 
           {/* Sabi: featured */}
           <Reveal className="mt-10">
-            <Link
-              href="/work/sabi"
-              className="project-card focus-ring group grid overflow-hidden rounded-2xl border border-line bg-paper lg:grid-cols-[0.85fr_1.15fr]"
-            >
+            <article className="project-card group relative grid overflow-hidden rounded-2xl border border-line bg-paper lg:grid-cols-[0.85fr_1.15fr]">
               <div className="flex flex-col p-7 sm:p-9">
-                <p className="label">01 · Co-founder, Product &amp; Engineering · 2026</p>
+                <p className="label">01 · Chief Product Officer &amp; Co-founder · 2026</p>
                 <h3 className="mt-4 text-4xl font-semibold">Sabi</h3>
                 <p className="mt-3 max-w-md leading-relaxed text-ink-soft">
                   AI-powered JAMB and WAEC exam prep for Nigerian students. An
@@ -164,16 +160,30 @@ export default function Home() {
                     <dd className="mt-1 text-sm text-ink-soft">students signed up</dd>
                   </div>
                   <div>
-                    <dt className="text-3xl font-semibold tracking-tight">JAMB + WAEC</dt>
-                    <dd className="mt-1 text-sm text-ink-soft">exams covered</dd>
+                    <dt className="text-3xl font-semibold tracking-tight">2 exams</dt>
+                    <dd className="mt-1 text-sm text-ink-soft">JAMB &amp; WAEC covered</dd>
                   </div>
                 </dl>
                 <div className="mt-7">
                   <Tags items={["Next.js", "Supabase", "AI", "Paystack"]} />
                 </div>
-                <span className="project-link mt-auto pt-8 text-sm font-medium text-accent">
-                  Read the case study <span aria-hidden="true">→</span>
-                </span>
+                <div className="mt-auto flex flex-wrap items-center gap-3 pt-8">
+                  {/* The case-study link stretches over the whole card */}
+                  <Link
+                    href="/work/sabi"
+                    className="project-link btn btn-primary focus-ring after:absolute after:inset-0 after:content-['']"
+                  >
+                    Read the case study <span aria-hidden="true">→</span>
+                  </Link>
+                  <a
+                    href={site.sabi}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-secondary focus-ring relative z-10 bg-paper"
+                  >
+                    Try Sabi live <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
               </div>
               <div className="relative min-h-[260px] overflow-hidden bg-accent-soft/60 p-6 sm:p-10 lg:pr-0">
                 <div className="shot-frame overflow-hidden rounded-lg border border-line bg-paper shadow-[0_24px_60px_-30px_rgba(18,20,18,.35)] lg:rounded-r-none">
@@ -188,73 +198,54 @@ export default function Home() {
                   />
                 </div>
               </div>
-            </Link>
+            </article>
           </Reveal>
 
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
-            {/* Sonix */}
-            <Reveal delay={60}>
-              <Link
-                href="/work/sonix"
-                className="project-card focus-ring group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-paper"
-              >
-                <div className="flex justify-center overflow-hidden bg-ink px-6 pt-8">
-                  <div className="w-[190px] overflow-hidden rounded-t-[1.6rem] border-x-[6px] border-t-[6px] border-[#2a2c2a]">
+          {/* Sonix */}
+          <Reveal className="mt-6">
+            <Link
+              href="/work/sonix"
+              className="project-card focus-ring group grid overflow-hidden rounded-2xl border border-line bg-paper lg:grid-cols-[0.85fr_1.15fr]"
+            >
+              <div className="flex flex-col p-7 sm:p-9">
+                <p className="label">02 · Personal project · 2026</p>
+                <h3 className="mt-4 text-4xl font-semibold">Sonix</h3>
+                <p className="mt-3 max-w-md leading-relaxed text-ink-soft">
+                  A cross-platform Flutter music player, built to learn mobile
+                  development end to end. Search, charts and 30-second previews
+                  through the Deezer API, plus a full-screen player, mini
+                  player and a saved library.
+                </p>
+                <div className="mt-7">
+                  <Tags items={["Flutter", "Dart", "Deezer API"]} />
+                </div>
+                <span className="project-link mt-auto pt-8 text-sm font-medium text-accent">
+                  Read the case study <span aria-hidden="true">→</span>
+                </span>
+              </div>
+              <div className="flex items-end justify-center gap-4 overflow-hidden bg-ink px-6 pt-10 sm:gap-6">
+                {[
+                  { src: "/images/sonix-search.jpeg", alt: "Sonix search screen", cls: "hidden translate-y-8 sm:block" },
+                  { src: "/images/sonix-home.jpeg", alt: "Sonix home screen showing featured playlists and trending tracks", cls: "" },
+                  { src: "/images/sonix-player.jpeg", alt: "Sonix full-screen player", cls: "hidden translate-y-8 sm:block" },
+                ].map((shot) => (
+                  <div
+                    key={shot.src}
+                    className={`w-[150px] shrink-0 overflow-hidden rounded-t-[1.4rem] border-x-[5px] border-t-[5px] border-[#2a2d35] sm:w-[170px] ${shot.cls}`}
+                  >
                     <Image
-                      src="/images/sonix-home.jpeg"
-                      alt="Sonix home screen showing featured playlists and trending tracks"
+                      src={shot.src}
+                      alt={shot.alt}
                       width={540}
                       height={1170}
-                      className="shot-image -mb-[38%] h-auto w-full"
-                      sizes="190px"
+                      className="shot-image -mb-[30%] h-auto w-full"
+                      sizes="170px"
                     />
                   </div>
-                </div>
-                <div className="flex flex-1 flex-col p-7">
-                  <p className="label">02 · Personal project · 2026</p>
-                  <h3 className="mt-3 text-2xl font-semibold">Sonix</h3>
-                  <p className="mt-2 leading-relaxed text-ink-soft">
-                    A cross-platform Flutter music player, built to learn mobile
-                    development end to end: browsing, search and playback
-                    through the Deezer API.
-                  </p>
-                  <div className="mt-5">
-                    <Tags items={["Flutter", "Dart", "Deezer API"]} />
-                  </div>
-                  <span className="project-link mt-auto pt-6 text-sm font-medium text-accent">
-                    Read the case study <span aria-hidden="true">→</span>
-                  </span>
-                </div>
-              </Link>
-            </Reveal>
-
-            {/* Genpay */}
-            <Reveal delay={120}>
-              <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-paper">
-                <div className="relative flex min-h-[220px] flex-1 items-end overflow-hidden bg-accent p-7 text-paper">
-                  <svg aria-hidden="true" className="absolute -right-10 -top-10 h-64 w-64 opacity-[0.12]" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="14">
-                    <rect x="20" y="50" width="160" height="100" rx="18" />
-                    <path d="M120 50v100" strokeDasharray="10 10" />
-                  </svg>
-                  <p className="relative max-w-[16ch] text-3xl font-semibold leading-tight tracking-tight">
-                    Tickets and merch for events, in one place.
-                  </p>
-                </div>
-                <div className="flex flex-col p-7">
-                  <p className="label">03 · Co-founder &amp; Software Engineer · In progress</p>
-                  <h3 className="mt-3 text-2xl font-semibold">Genpay</h3>
-                  <p className="mt-2 leading-relaxed text-ink-soft">
-                    An event ticketing and merchandise platform. I build the
-                    Flutter mobile app and the Next.js web dashboard, with
-                    Supabase and Paystack behind it.
-                  </p>
-                  <div className="mt-5">
-                    <Tags items={["Flutter", "Next.js", "Supabase", "Paystack"]} />
-                  </div>
-                </div>
+                ))}
               </div>
-            </Reveal>
-          </div>
+            </Link>
+          </Reveal>
         </div>
       </section>
 

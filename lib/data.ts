@@ -5,6 +5,8 @@ export const site = {
   github: "https://github.com/ToluAdegoke",
   linkedin: "https://www.linkedin.com/in/tolulope-adegoke-a64b89283",
   twitter: "https://twitter.com/dev_Tolu",
+  cv: "/Adegoke_Tolulope_Resume.pdf",
+  sabi: "https://sabiexam.com",
 };
 
 export const nav = [

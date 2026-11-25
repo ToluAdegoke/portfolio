@@ -1,6 +1,7 @@
 import { site } from "@/lib/data";
 
 const links = [
+  { href: site.cv, label: "CV" },
   { href: site.github, label: "GitHub" },
   { href: site.linkedin, label: "LinkedIn" },
   { href: site.twitter, label: "Twitter / X" },
