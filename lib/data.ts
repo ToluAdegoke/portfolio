@@ -6,6 +6,8 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/tolulope-adegoke-a64b89283",
   twitter: "https://twitter.com/dev_Tolu",
   sabi: "https://sabiexam.com",
+  // Spotify profile link. Leave empty to show the Music card without a link.
+  spotify: "https://open.spotify.com/user/31b3pyozhxgjtlgwwobcz2dqd6c4",
   whatsapp: `https://wa.me/2349027035268?text=${encodeURIComponent("Hi Tolu, I'd like a website for my business.")}`,
 };
 
