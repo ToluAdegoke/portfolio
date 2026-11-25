@@ -60,7 +60,7 @@ export default function Home() {
               <span className="sr-only">, short for Tolulope Adegoke.</span>
             </h1>
             <p aria-hidden="true" className="hero-kicker note mt-3 -rotate-2 text-2xl sm:text-[1.7rem]">
-              (Tolulope Adegoke, if we&rsquo;re being formal)
+              (Tolulope Adegoke Samuel, if we&rsquo;re being formal)
             </p>
             <p className="hero-copy mt-6 max-w-2xl text-xl leading-snug text-ink-soft sm:text-2xl">
               I build web and mobile products from the first idea to software
