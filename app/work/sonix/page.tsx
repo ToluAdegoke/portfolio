@@ -11,8 +11,7 @@ export const metadata: Metadata = {
 export default function SonixCaseStudy() {
   return (
     <div className="mx-auto max-w-4xl px-6 py-16 sm:px-8 sm:py-24">
-      <p className="text-sm text-ink-soft">Personal project</p>
-      <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
+      <h1 className="font-display text-4xl leading-tight sm:text-5xl">
         Sonix
       </h1>
       <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
