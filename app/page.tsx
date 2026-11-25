@@ -48,11 +48,52 @@ function SwirlArrow({ className = "" }: { className?: string }) {
   );
 }
 
-const offTheClock = [
-  { emoji: "🎧", title: "Music", body: "Something is always playing while I build." },
-  { emoji: "🏀", title: "Basketball", body: "Watching it, and arguing about it after." },
-  { emoji: "🚗", title: "Cars", body: "Will absolutely slow down to look at a nice one." },
+const offTheClock: { emoji: string; title: string; body: string; href?: string; cta?: string }[] = [
+  {
+    emoji: "🎧",
+    title: "Music",
+    body: "Something is always playing while I build.",
+    href: site.spotify || undefined,
+    cta: "See what I'm listening to ↗",
+  },
+  { emoji: "🏟️", title: "Sports", body: "Arsenal in football, Miami Heat in the NBA, and Mercedes in F1." },
+  {
+    emoji: "🚗",
+    title: "Cars",
+    body: "Will absolutely slow down to look at a nice one.",
+    href: "/cars",
+    cta: "See my favourite cars →",
+  },
 ];
+
+function OffClockCard({ emoji, title, body, href, cta }: (typeof offTheClock)[number]) {
+  const inner = (
+    <>
+      <span aria-hidden="true" className="text-4xl transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110">
+        {emoji}
+      </span>
+      <div>
+        <h3 className="text-lg font-semibold">{title}</h3>
+        <p className="mt-1 text-[0.95rem] leading-relaxed text-ink-soft">{body}</p>
+        {href && cta && <p className="mt-3 text-sm font-medium text-accent">{cta}</p>}
+      </div>
+    </>
+  );
+  const cls =
+    "group flex h-full items-start gap-4 rounded-2xl border-[1.5px] border-ink bg-paper p-6 shadow-[4px_4px_0_var(--ink)] transition-transform hover:-translate-y-1";
+  if (!href) return <div className={cls}>{inner}</div>;
+  if (href.startsWith("/"))
+    return (
+      <Link href={href} className={`${cls} focus-ring`}>
+        {inner}
+      </Link>
+    );
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className={`${cls} focus-ring`}>
+      {inner}
+    </a>
+  );
+}
 
 const noteTilt = ["-rotate-2", "rotate-1", "rotate-2", "-rotate-1"];
 
@@ -390,16 +431,8 @@ export default function Home() {
           <ul className="mt-10 grid gap-5 sm:grid-cols-3">
             {offTheClock.map((x, i) => (
               <li key={x.title}>
-                <Reveal delay={i * 60}>
-                  <div className="group flex items-start gap-4 rounded-2xl border-[1.5px] border-ink bg-paper p-6 shadow-[4px_4px_0_var(--ink)] transition-transform hover:-translate-y-1">
-                    <span aria-hidden="true" className="text-4xl transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110">
-                      {x.emoji}
-                    </span>
-                    <div>
-                      <h3 className="text-lg font-semibold">{x.title}</h3>
-                      <p className="mt-1 text-[0.95rem] leading-relaxed text-ink-soft">{x.body}</p>
-                    </div>
-                  </div>
+                <Reveal delay={i * 60} className="h-full">
+                  <OffClockCard {...x} />
                 </Reveal>
               </li>
             ))}
