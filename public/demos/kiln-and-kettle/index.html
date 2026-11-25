@@ -4,136 +4,155 @@
 <meta name="robots" content="noindex, nofollow">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kiln &amp; Kettle</title>
+<title>Kiln &amp; Kettle | Cafe in Lekki, Lagos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-/* Layout idea: big poster-type hero, ticker, tabbed menu, reservation card. Pale sage paper, forest ink, tomato accent. */
+/* Warm, photo-led cafe site. Cream paper, espresso ink, copper accent. */
 :root{
-  --paper:#E6ECE2; --ink:#10261B; --leaf:#1F4D36; --tomato:#E8452C; --butter:#F3C85A; --white:#F8FAF5;
-  --display:"Gloock", Georgia, serif; --body:"Figtree", system-ui, sans-serif;
+  --cream:#F6F0E6; --sand:#EADFCC; --espresso:#1E1612; --roast:#2D211A; --copper:#B5532A; --copper-d:#98441F; --muted:#6F6157;
+  --display:"Fraunces", Georgia, serif; --body:"DM Sans", system-ui, sans-serif;
   color-scheme:light;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+body{background:var(--cream);color:var(--espresso);font-family:var(--body);font-size:17px;line-height:1.6}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--tomato);outline-offset:3px}
-.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1;text-wrap:balance}
+img{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--copper);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.05;text-wrap:balance;letter-spacing:-.01em}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--copper);margin-bottom:16px}
 
-/* nav */
-header{position:sticky;top:0;z-index:20;background:rgba(230,236,226,.92);backdrop-filter:blur(8px);border-bottom:1.5px solid var(--ink)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
-.logo{font-family:var(--display);font-size:26px;text-decoration:none;display:flex;align-items:center;gap:10px}
-.logo i{width:14px;height:14px;border-radius:50%;background:var(--tomato);display:inline-block}
-nav ul{display:flex;gap:28px;list-style:none;font-weight:600;font-size:15px}
-nav a{text-decoration:none}
-nav a:hover{color:var(--tomato)}
-.btn{display:inline-block;background:var(--ink);color:var(--white);padding:13px 24px;border-radius:999px;font-weight:700;text-decoration:none;border:0;font:inherit;font-weight:700;cursor:pointer;transition:transform .2s, background .2s}
-.btn:hover{background:var(--tomato);transform:translateY(-2px)}
-.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
-.btn.alt:hover{background:var(--ink);color:var(--white)}
-.burger{display:none;background:none;border:1.5px solid var(--ink);border-radius:10px;padding:8px 12px;font:inherit;font-weight:700;cursor:pointer}
+/* nav: transparent on the hero, solid after scrolling */
+header{position:fixed;top:0;left:0;right:0;z-index:30;transition:background .3s,box-shadow .3s,color .3s;color:#fff}
+header.solid{background:rgba(246,240,230,.95);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(30,22,18,.12);color:var(--espresso)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:16px}
+.logo{font-family:var(--display);font-size:25px;font-weight:600;text-decoration:none;letter-spacing:-.01em}
+.logo span{color:var(--copper)}
+nav ul{display:flex;gap:34px;list-style:none;font-weight:500;font-size:15px}
+nav a{text-decoration:none;opacity:.92}
+nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1.5px}
+.btn{display:inline-block;background:var(--copper);color:#fff;padding:14px 28px;border-radius:999px;font:inherit;font-weight:700;font-size:15px;text-decoration:none;border:0;cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{background:var(--copper-d);transform:translateY(-2px)}
+.btn.ghost{background:transparent;border:1.5px solid rgba(255,255,255,.7);color:#fff}
+.btn.ghost:hover{background:#fff;color:var(--espresso)}
+.burger{display:none;background:none;border:1.5px solid currentColor;color:inherit;border-radius:10px;padding:8px 14px;font:inherit;font-weight:700;cursor:pointer}
 
 /* hero */
-.hero{padding:56px 0 40px;display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
-.status{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--ink);padding:7px 14px;border-radius:999px;font-weight:600;font-size:14px;background:var(--white)}
-.dot{width:10px;height:10px;border-radius:50%;background:#999}
-.dot.open{background:#2FA36B;box-shadow:0 0 0 4px rgba(47,163,107,.25);animation:pulse 2s infinite}
-@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(47,163,107,0)}}
-.hero h1{font-size:clamp(54px,9.4vw,128px);margin:22px 0 22px;letter-spacing:-.02em}
-.hero h1 em{font-style:normal;color:var(--tomato)}
-.hero p{max-width:46ch;font-size:19px;margin-bottom:28px}
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;background:var(--espresso);overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;animation:slowzoom 18s ease-out both}
+@keyframes slowzoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,14,10,.55) 0%,rgba(20,14,10,.2) 35%,rgba(20,14,10,.82) 100%),linear-gradient(90deg,rgba(20,14,10,.6),transparent 65%)}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-bottom:64px;padding-top:140px}
+.status{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.3);padding:8px 16px;border-radius:999px;font-weight:500;font-size:14px}
+.dot{width:9px;height:9px;border-radius:50%;background:#aaa}
+.dot.open{background:#3DDC84;box-shadow:0 0 0 4px rgba(61,220,132,.25);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(61,220,132,0)}}
+.hero h1{font-size:clamp(46px,8vw,112px);margin:24px 0 22px;max-width:12ch;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.hero p.lead{max-width:48ch;font-size:19px;opacity:.94;margin-bottom:32px}
 .cta{display:flex;gap:14px;flex-wrap:wrap}
-.cup{position:relative;aspect-ratio:4/5;background:var(--leaf);border-radius:46% 46% 24px 24px / 38% 38% 24px 24px;display:grid;place-items:center;overflow:hidden;border:1.5px solid var(--ink)}
-.cup img{width:100%;height:100%;object-fit:cover;display:block}
-.steam path{stroke:var(--butter);stroke-width:5;fill:none;stroke-linecap:round;stroke-dasharray:60;animation:steam 3.2s ease-in-out infinite}
-.steam path:nth-child(2){animation-delay:.6s}.steam path:nth-child(3){animation-delay:1.2s}
-@keyframes steam{0%{stroke-dashoffset:60;opacity:.2}50%{opacity:1}100%{stroke-dashoffset:-60;opacity:.2}}
-.stamp{position:absolute;right:16px;bottom:16px;width:104px;height:104px;border-radius:50%;background:var(--butter);color:var(--ink);display:grid;place-items:center;text-align:center;font-weight:800;font-size:12px;line-height:1.15;transform:rotate(-12deg);border:1.5px solid var(--ink)}
+.hero-strip{margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,.28);display:flex;gap:40px;flex-wrap:wrap;font-size:15px}
+.hero-strip b{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.7;font-weight:700;margin-bottom:4px}
 
-/* ticker */
-.ticker{background:var(--ink);color:var(--butter);overflow:hidden;white-space:nowrap;padding:14px 0;font-family:var(--display);font-size:24px}
-.ticker div{display:inline-block;animation:slide 28s linear infinite}
-.ticker span{margin:0 22px}
-@keyframes slide{to{transform:translateX(-50%)}}
+section{padding:104px 0}
 
-section{padding:88px 0}
-.eyebrow{font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--tomato);margin-bottom:14px}
-h2{font-size:clamp(38px,5.6vw,72px);margin-bottom:18px}
-
-/* story */
-.story{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-.photos{grid-column:1/-1;display:grid;grid-template-columns:1.5fr 1fr;gap:18px;margin-top:8px}
-.photos img{width:100%;height:100%;min-height:260px;max-height:460px;object-fit:cover;border:1.5px solid var(--ink);border-radius:22px;display:block}
-.story p+p{margin-top:16px}
-.facts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.fact{background:var(--white);border:1.5px solid var(--ink);border-radius:20px;padding:22px}
-.fact b{font-family:var(--display);font-weight:400;font-size:44px;display:block;line-height:1;color:var(--leaf)}
-.fact:nth-child(2){background:var(--butter)}
-.fact:nth-child(3){background:var(--tomato);color:var(--white)}
-.fact:nth-child(3) b{color:var(--white)}
+/* intro */
+.intro{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:start}
+.intro h2{font-size:clamp(34px,4.6vw,60px)}
+.intro p{color:var(--muted);font-size:18px}
+.pillars{margin-top:8px;border-top:1px solid rgba(30,22,18,.18)}
+.pillar{display:grid;grid-template-columns:48px 1fr;gap:6px 14px;padding:22px 0;border-bottom:1px solid rgba(30,22,18,.18)}
+.pillar i{font-family:var(--display);font-style:normal;color:var(--copper);font-size:20px;grid-row:span 2;padding-top:2px}
+.pillar h3{font-size:24px}
+.pillar p{font-size:15px;color:var(--muted)}
 
 /* menu */
-.menu{background:var(--leaf);color:var(--white)}
-.menu .eyebrow{color:var(--butter)}
-.tabs{display:flex;gap:10px;margin:26px 0 30px;flex-wrap:wrap}
-.tab{background:transparent;color:var(--white);border:1.5px solid var(--white);border-radius:999px;padding:10px 22px;font:inherit;font-weight:700;cursor:pointer;transition:.2s}
-.tab[aria-selected="true"],.tab:hover{background:var(--butter);color:var(--ink);border-color:var(--butter)}
-.menuwrap{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:start}
-.items{display:grid;grid-template-columns:1fr;gap:0}
-.pics{display:grid;gap:16px;position:sticky;top:92px}
-.pics img{width:100%;object-fit:cover;border:1.5px solid var(--white);border-radius:22px;display:block}
-.pics.one img{aspect-ratio:3/4}.pics.two img{aspect-ratio:4/3}
-.item{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:20px 0;border-bottom:1px dashed rgba(248,250,245,.45)}
-.item h3{font-size:25px}
-.item .price{font-weight:700;color:var(--butter);font-variant-numeric:tabular-nums}
-.item p{grid-column:1/-1;opacity:.82;font-size:15px}
-.tag{display:inline-block;font-family:var(--body);font-size:11px;font-weight:800;letter-spacing:.08em;background:var(--tomato);color:var(--white);padding:3px 8px;border-radius:999px;vertical-align:middle;margin-left:8px}
+.menu{background:var(--roast);color:var(--cream)}
+.menu .eyebrow{color:#E0A07C}
+.menu h2{font-size:clamp(40px,5.4vw,72px)}
+.tabs{display:flex;gap:6px;margin:30px 0 40px;border-bottom:1px solid rgba(246,240,230,.2)}
+.tab{background:none;color:rgba(246,240,230,.65);border:0;border-bottom:2px solid transparent;padding:12px 22px;margin-bottom:-1px;font:inherit;font-weight:700;font-size:16px;cursor:pointer;transition:color .2s,border-color .2s}
+.tab:hover{color:#fff}
+.tab[aria-selected="true"]{color:#fff;border-bottom-color:var(--copper)}
+.menuwrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+.pics{position:sticky;top:104px;display:grid;gap:14px}
+.pics img{width:100%;object-fit:cover;border-radius:14px;animation:fadein .5s ease both}
+.pics.one img{aspect-ratio:4/5}.pics.two img{aspect-ratio:16/10}
+@keyframes fadein{from{opacity:0;transform:scale(1.03)}to{opacity:1;transform:none}}
+.item{display:grid;grid-template-columns:1fr auto;gap:4px 20px;padding:22px 14px;margin:0 -14px;border-bottom:1px solid rgba(246,240,230,.14);border-radius:10px;transition:background .25s}
+.item:hover{background:rgba(246,240,230,.06)}
+.item h3{font-size:26px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.price{font-weight:700;color:#E8B48F;font-variant-numeric:tabular-nums;align-self:start;padding-top:4px}
+.item p{grid-column:1/-1;color:rgba(246,240,230,.72);font-size:15px}
+.tag{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.1em;background:var(--copper);color:#fff;padding:4px 9px;border-radius:999px}
+
+/* gallery */
+.gal-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.gal-head h2{font-size:clamp(36px,5vw,64px)}
+.gal{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:300px;gap:14px}
+.gal figure{overflow:hidden;border-radius:14px;background:var(--sand)}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.gal figure:hover img{transform:scale(1.06)}
+.g1{grid-column:span 4}.g2{grid-column:span 2}.g3{grid-column:span 2}.g4{grid-column:span 4}.g5{grid-column:span 3}.g6{grid-column:span 3}
 
 /* visit */
-.visit{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px}
-.hours{list-style:none;margin:20px 0;border-top:1.5px solid var(--ink)}
-.hours li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1.5px solid var(--ink);font-weight:600}
-.hours li.today{color:var(--tomato)}
-.card{background:var(--white);border:1.5px solid var(--ink);border-radius:26px;padding:32px;box-shadow:8px 8px 0 var(--ink)}
+.visit-sec{background:var(--sand)}
+.visit{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.visit h2{font-size:clamp(38px,5vw,64px);margin-bottom:20px}
+.addr{color:var(--muted)}
+.hours{list-style:none;margin:28px 0 0;border-top:1px solid rgba(30,22,18,.2)}
+.hours li{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(30,22,18,.2);font-weight:500}
+.hours li.today{color:var(--copper);font-weight:700}
+.card{background:var(--cream);border-radius:20px;padding:36px;box-shadow:0 24px 60px rgba(30,22,18,.12)}
 .card h3{font-size:34px;margin-bottom:6px}
-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
-label{display:grid;gap:6px;font-weight:700;font-size:14px}
+.card>p{color:var(--muted)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+label{display:grid;gap:7px;font-weight:700;font-size:14px}
 label.full{grid-column:1/-1}
-input,select{font:inherit;font-weight:500;padding:12px 14px;border:1.5px solid var(--ink);border-radius:12px;background:var(--paper);color:var(--ink);width:100%}
-form .btn{grid-column:1/-1;margin-top:6px}
-.ok{display:none;margin-top:18px;background:var(--butter);border:1.5px solid var(--ink);border-radius:14px;padding:16px;font-weight:600}
+input,select{font:inherit;font-weight:500;padding:13px 14px;border:1px solid rgba(30,22,18,.3);border-radius:10px;background:#fff;color:var(--espresso);width:100%}
+input:focus,select:focus{border-color:var(--copper);outline:none;box-shadow:0 0 0 3px rgba(181,83,42,.2)}
+form .btn{grid-column:1/-1;margin-top:6px;padding:16px}
+.ok{display:none;margin-top:18px;background:#E8F3E8;border-radius:12px;padding:16px;font-weight:500}
 .ok.show{display:block}
 
-footer{background:var(--ink);color:var(--paper);padding:48px 0;font-size:15px}
-footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
-footer .logo{color:var(--white)}
+footer{background:var(--espresso);color:rgba(246,240,230,.75);padding:48px 0;font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+footer .logo{color:#fff}
+
+/* scroll reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
 
 @media (max-width:860px){
-  .hero,.story,.visit,.menuwrap,.photos{grid-template-columns:1fr}
+  .intro,.menuwrap,.visit{grid-template-columns:1fr;gap:40px}
   .pics{position:static;grid-template-columns:1fr 1fr}.pics.one{grid-template-columns:1fr}.pics.one img{aspect-ratio:4/3}
-  .cup{max-width:420px}
-  nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);flex-direction:column;padding:22px 20px;gap:18px;border-bottom:1.5px solid var(--ink)}
+  nav ul{display:none;position:absolute;top:76px;left:0;right:0;background:var(--cream);color:var(--espresso);flex-direction:column;padding:24px;gap:20px;box-shadow:0 12px 30px rgba(0,0,0,.12)}
   nav ul.open{display:flex}
   .burger{display:block}
   .nav .btn.book{display:none}
-  section{padding:60px 0}
+  section{padding:68px 0}
+  .hero .wrap{padding-bottom:40px}
+  .hero-strip{gap:24px;margin-top:36px}
+  .gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px}
+  .g1,.g2,.g3,.g4,.g5,.g6{grid-column:span 1}.g1{grid-column:span 2}
+  .tab{padding:12px 14px}
   form{grid-template-columns:1fr}
+  .card{padding:26px}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<header>
+<header id="hdr">
   <div class="wrap nav">
-    <a class="logo" href="#top"><i></i>Kiln &amp; Kettle</a>
+    <a class="logo" href="#top">Kiln <span>&amp;</span> Kettle</a>
     <nav aria-label="Main">
       <ul id="links">
-        <li><a href="#story">Our story</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#menu">Menu</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#visit">Visit</a></li>
       </ul>
     </nav>
@@ -143,40 +162,35 @@ footer .logo{color:var(--white)}
 </header>
 
 <main id="top">
-<div class="wrap hero">
-  <div>
+<div class="hero">
+  <img src="img/barista.jpg" alt="A barista pouring steamed milk into a cup at the counter" width="1000" height="681" fetchpriority="high">
+  <div class="wrap">
     <span class="status"><span class="dot" id="dot"></span><span id="statusText">Checking hours…</span></span>
-    <h1>Slow coffee.<br>Loud <em>flavour.</em></h1>
-    <p>A neighbourhood cafe in Lekki serving single-origin Nigerian coffee, wood-fired breakfasts and bakes that sell out by noon.</p>
+    <h1>Coffee worth sitting down for.</h1>
+    <p class="lead">A neighbourhood cafe in Lekki. Single-origin Nigerian coffee, wood-fired breakfasts and fresh bakes, from early morning.</p>
     <div class="cta">
-      <a class="btn" href="#menu">See the menu</a>
-      <a class="btn alt" href="#visit">Reserve a table</a>
+      <a class="btn" href="#visit">Reserve a table</a>
+      <a class="btn ghost" href="#menu">See the menu</a>
     </div>
-  </div>
-  <div class="cup"><img src="img/latte.jpg" alt="A latte with leaf art on a wooden cafe table" width="800" height="1200" fetchpriority="high">
-    <div class="stamp">ROASTED<br>IN-HOUSE<br>DAILY</div>
+    <div class="hero-strip">
+      <div><b>Find us</b>14 Admiralty Way, Lekki Phase 1</div>
+      <div><b>Today</b><span id="todayHours">&nbsp;</span></div>
+      <div><b>Call</b>+234 800 000 0000</div>
+    </div>
   </div>
 </div>
 
-<div class="ticker" aria-hidden="true"><div id="tick"></div></div>
-
-<section id="story">
-  <div class="wrap story">
-    <div>
-      <p class="eyebrow">Our story</p>
-      <h2>Started with one oven and a borrowed grinder.</h2>
-      <p>Kiln &amp; Kettle opened in 2021 in a converted garage on Admiralty Way. We wanted a place where the coffee is taken seriously and nobody is rushed.</p>
-      <p>We buy beans from small farms in Kaduna and Mambilla, roast them every morning behind the counter, and bake with flour milled an hour from the city. Come for a flat white, stay for the jollof eggs.</p>
+<section id="about">
+  <div class="wrap intro">
+    <div class="rv">
+      <p class="eyebrow">About</p>
+      <h2>A calm room, a serious coffee bar and a kitchen that cooks to order.</h2>
+      <p style="margin-top:22px">We roast in-house, bake every morning and keep the menu short so everything on it is done well. Stay for a quiet work session or a long breakfast with friends.</p>
     </div>
-    <div class="facts">
-      <div class="fact"><b>6</b>partner farms, paid fairly</div>
-      <div class="fact"><b>14h</b>from roaster to your cup, max</div>
-      <div class="fact"><b>4.9</b>average rating from 1,200 guests</div>
-      <div class="fact"><b>0</b>plastic straws. Ever.</div>
-    </div>
-    <div class="photos">
-      <img src="img/barista.jpg" alt="A barista pouring milk into a cup at the counter" loading="lazy">
-      <img src="img/interior.jpg" alt="Window bar with hanging lamps and stools" loading="lazy">
+    <div class="pillars rv">
+      <div class="pillar"><i>01</i><h3>Roasted in-house</h3><p>Small batches of Nigerian single-origin beans, roasted each morning.</p></div>
+      <div class="pillar"><i>02</i><h3>Wood-fired kitchen</h3><p>Breakfast and lunch cooked to order, with Nigerian flavours.</p></div>
+      <div class="pillar"><i>03</i><h3>Baked daily</h3><p>Pastries and loaves out of the oven before we open.</p></div>
     </div>
   </div>
 </section>
@@ -190,19 +204,35 @@ footer .logo{color:var(--white)}
       <button class="tab" role="tab" aria-selected="false" data-k="kitchen">Kitchen</button>
       <button class="tab" role="tab" aria-selected="false" data-k="bakes">Bakes</button>
     </div>
-    <div class="menuwrap"><div class="items" id="items" role="tabpanel"></div><div class="pics" id="pics"></div></div>
+    <div class="menuwrap"><div class="pics" id="pics"></div><div class="items" id="items" role="tabpanel"></div></div>
   </div>
 </section>
 
-<section id="visit">
+<section id="gallery">
+  <div class="wrap">
+    <div class="gal-head rv">
+      <div><p class="eyebrow">Gallery</p><h2>Inside the cafe</h2></div>
+    </div>
+    <div class="gal rv">
+      <figure class="g1"><img src="img/latte.jpg" alt="Latte with leaf art on a wooden table" loading="lazy"></figure>
+      <figure class="g2"><img src="img/jollof.jpg" alt="Skillet of spiced rice with egg" loading="lazy"></figure>
+      <figure class="g3"><img src="img/interior.jpg" alt="Window bar with hanging lamps" loading="lazy"></figure>
+      <figure class="g4"><img src="img/pastry.jpg" alt="Coconut-topped croissants on a board" loading="lazy"></figure>
+      <figure class="g5"><img src="img/suya.jpg" alt="Toasted sandwich with spiced beef and fries" loading="lazy"></figure>
+      <figure class="g6"><img src="img/hands.jpg" alt="Hands holding a black ceramic mug" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="visit-sec" id="visit">
   <div class="wrap visit">
-    <div>
+    <div class="rv">
       <p class="eyebrow">Visit us</p>
       <h2>Come hungry.</h2>
-      <p>14 Admiralty Way, Lekki Phase 1, Lagos<br>+234 800 000 0000 · hello@kilnandkettle.example</p>
+      <p class="addr">14 Admiralty Way, Lekki Phase 1, Lagos<br>+234 800 000 0000 · hello@kilnandkettle.example</p>
       <ul class="hours" id="hours"></ul>
     </div>
-    <div class="card">
+    <div class="card rv">
       <h3>Reserve a table</h3>
       <p>Tables for 2 to 8. We hold your spot for 15 minutes.</p>
       <form id="form">
@@ -220,7 +250,7 @@ footer .logo{color:var(--white)}
 
 <footer>
   <div class="wrap">
-    <a class="logo" href="#top"><i></i>Kiln &amp; Kettle</a>
+    <a class="logo" href="#top">Kiln <span>&amp;</span> Kettle</a>
     <span>© 2026 Kiln &amp; Kettle. Demo website by Trojan.</span>
   </div>
 </footer>
@@ -231,12 +261,12 @@ const MENU={
   kitchen:[["Jollof Eggs","Soft scramble, smoky jollof, grilled plantain.","₦6,500","POPULAR"],["Suya Toastie","Sourdough, spiced beef, onion, yaji butter.","₦7,200"],["Akara Benedict","Bean fritters, poached eggs, pepper hollandaise.","₦7,800"],["Garden Bowl","Grains, roasted veg, tahini, pickled onion.","₦6,900"],["Pap &amp; Moin Moin","Warm pap, steamed bean pudding, honey.","₦5,200"],["Chicken Waffle","Crisp waffle, fried chicken, maple pepper.","₦8,500"]],
   bakes:[["Butter Croissant","Laminated for three days.","₦2,500"],["Coconut Buns","Toasted coconut, vanilla glaze.","₦2,200","SELLS OUT"],["Banana Loaf","Brown butter, walnuts.","₦2,400"],["Chin Chin Cookie","Nutmeg, browned butter, sea salt.","₦1,800"],["Puff Puff Doughnut","Cinnamon sugar, caramel dip.","₦2,000"],["Meat Pie","Flaky pastry, beef, potato, thyme.","₦2,300"]]
 };
-const items=document.getElementById('items');
 const PICS={coffee:[["hands","Hands holding a black ceramic mug"]],kitchen:[["jollof","Skillet of spiced rice with egg and crispy bits"],["suya","Toasted sesame sandwich with spiced beef and fries"]],bakes:[["pastry","Coconut-topped croissants on a wooden board"],["loaf","Sliced banana loaf with peanut butter frosting"]]};
+const items=document.getElementById('items');
 function show(k){
   const pe=document.getElementById('pics');
   pe.className='pics '+(PICS[k].length===1?'one':'two');
-  pe.innerHTML=PICS[k].map(([f,a])=>`<img src="img/${f}.jpg" alt="${a}" loading="lazy">`).join('');
+  pe.innerHTML=PICS[k].map(([f,a])=>`<img src="img/${f}.jpg" alt="${a}">`).join('');
   items.innerHTML=MENU[k].map(([n,d,p,t])=>`<div class="item"><h3>${n}${t?`<span class="tag">${t}</span>`:''}</h3><span class="price">${p}</span><p>${d}</p></div>`).join('');
 }
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
@@ -244,12 +274,6 @@ document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
   show(b.dataset.k);
 }));
 show('coffee');
-
-// ticker
-const words=["Single-origin","Wood-fired","Baked at dawn","Lekki's living room","Roasted daily","Pour-over","Jollof eggs"];
-const tick=document.getElementById('tick');
-const row=words.map(w=>`<span>${w}</span><span>✺</span>`).join('');
-tick.innerHTML=row+row+row+row;
 
 // hours + open now (Lagos time)
 const H={0:[8,21],1:[7,19],2:[7,19],3:[7,19],4:[7,19],5:[7,20],6:[8,21]};
@@ -259,6 +283,7 @@ const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Africa/Lagos',weekday:'sh
 const wd=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(parts.find(p=>p.type==='weekday').value);
 const hr=parseInt(parts.find(p=>p.type==='hour').value,10)%24;
 document.getElementById('hours').innerHTML=[1,2,3,4,5,6,0].map(d=>`<li class="${d===wd?'today':''}"><span>${names[d]}</span><span>${fmt(H[d][0])} – ${fmt(H[d][1])}</span></li>`).join('');
+document.getElementById('todayHours').textContent=`${fmt(H[wd][0])} – ${fmt(H[wd][1])}`;
 const open=hr>=H[wd][0]&&hr<H[wd][1];
 document.getElementById('dot').classList.toggle('open',open);
 document.getElementById('statusText').textContent=open?`Open now · until ${fmt(H[wd][1])}`:`Closed · opens ${fmt(H[wd][0])}`;
@@ -273,10 +298,17 @@ document.getElementById('form').addEventListener('submit',e=>{
   ok.classList.add('show');
 });
 
-// mobile nav
+// nav: solid after scroll, mobile menu
+const hdr=document.getElementById('hdr');
+const onScroll=()=>hdr.classList.toggle('solid',scrollY>40||document.getElementById('links').classList.contains('open'));
+addEventListener('scroll',onScroll,{passive:true});onScroll();
 const burger=document.getElementById('burger'),links=document.getElementById('links');
-burger.addEventListener('click',()=>{const o=links.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
-links.addEventListener('click',()=>{links.classList.remove('open');burger.setAttribute('aria-expanded',false)});
+burger.addEventListener('click',()=>{const o=links.classList.toggle('open');burger.setAttribute('aria-expanded',o);onScroll()});
+links.addEventListener('click',()=>{links.classList.remove('open');burger.setAttribute('aria-expanded',false);onScroll()});
+
+// scroll reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 </script>
 <a href="/#websites" id="back-to-portfolio" style="position:fixed;left:14px;bottom:14px;z-index:50;background:#16161a;color:#f4f2ec;font:600 13px/1 system-ui,sans-serif;padding:11px 16px;border-radius:999px;text-decoration:none;box-shadow:0 4px 18px rgba(0,0,0,.25)">&larr; Back to portfolio</a>
 </body>
