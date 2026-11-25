@@ -47,3 +47,29 @@ export const demos = [
     height: 666,
   },
 ];
+
+export const stack = [
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Tailwind CSS",
+  "Flutter",
+  "Supabase",
+  "Paystack",
+  "Vercel",
+];
+
+export const services = [
+  {
+    title: "Websites for businesses",
+    body: "Clean, fast sites for cafes, brands and creatives that look good on a phone and are easy to update.",
+  },
+  {
+    title: "Web apps",
+    body: "Dashboards, booking and checkout flows built with Next.js, React and Supabase.",
+  },
+  {
+    title: "Mobile apps",
+    body: "Cross-platform apps built with Flutter, from first screens to a working product.",
+  },
+];
