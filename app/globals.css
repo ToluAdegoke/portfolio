@@ -77,7 +77,7 @@ h1, h2, h3 {
 }
 .hero-title { animation-delay: 70ms; }
 .hero-copy { animation-delay: 140ms; }
-.hero-portrait-wrap { animation-delay: 200ms; }
+.hero-portrait-wrap { animation-delay: 200ms; position: relative; z-index: 10; } /* keep stickers above the facts row below */
 
 .reveal {
   opacity: 0;
